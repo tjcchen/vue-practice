@@ -1,1 +1,1 @@
-<h2 align="center">This is an personal project for vue.js practice purpose</h2>
+<p align="center">This is a personal project for vue.js practice purpose</p>
