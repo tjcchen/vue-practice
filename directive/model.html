@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Vue model - 双向数据绑定</title>
+  <script type="text/javascript" src="../vue.js"></script>
+</head>
+<body>
+  <h2>这是视图层</h2> 
+
+  <div id="root">
+    <input type="checkbox" v-model="checked">I Agree <br/>
+
+    {{ checked }}
+
+    <button type="button" v-bind:disabled="!checked">Submit</button>
+  </div>
+
+  <script type="text/javascript">
+    let vm = new Vue({
+      el: '#root',
+
+      // data中包含的数据是模型层/数据层
+      data: {
+        checked: false
+      }
+    });
+  </script>
+</body>
+</html>

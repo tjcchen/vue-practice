@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Vue for</title>
+  <script type="text/javascript" src="../vue.js"></script>
+</head>
+<body>
+  <div id="root">
+    <div v-for="(value, key) in numArr">
+      {{ key }} - {{ value }}
+    </div>
+
+    <br/>
+
+    <div v-for="item in numArr">{{ item }}</div>
+
+    <br/>
+
+    <ol>
+      <li v-for="user in users">
+        username: {{ user.name }}, password: {{ user.password }}
+      </li>
+    </ol>
+  </div>
+
+  <script type="text/javascript">
+    let vm = new Vue({
+      el: '#root',
+      data: {
+        numArr: [12, 32, 34, 56, 28],
+        users: [
+          { name: 'jackie', password: '123456' },
+          { name: 'tony', password: '234567' },
+          { name: 'andy', password: '345678' }
+        ]
+      }
+    });
+  </script>
+</body>
+</html>

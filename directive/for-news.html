@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Vue News</title>
+  <script type="text/javascript" src="../vue.js"></script>
+  <style type="text/css">
+  * { padding: 0; margin: 0; }
+  #tab { text-align: center; }
+  #tab thead { font-weight: 700; }
+  #tab tr td { border: 1px solid #ccc; padding: 10px 0; }
+  </style>
+</head>
+<body>
+  <table id="tab" width="100%">
+    <thead>
+      <tr>
+        <td>ID</td>
+        <td>标题</td>
+        <td>频道</td>
+        <td>发布时间</td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr v-for="item in news" v-bind:data-key="item.ID">
+        <td>{{ item.ID }}</td>
+        <td>
+          <a href="javascript:;">{{ item.title }}</a>
+        </td>
+        <td>{{ channels[item.channel] }}</td>
+        <td>{{ date(item.time * 1000) }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <script type="text/javascript">
+  let vm = new Vue({
+    el: '#tab',
+    data: {
+      a: 12,
+      news: [{
+        ID: 101,
+        title: '习主席在庆祝改革开放40年大会上演讲',
+        channel: 'index',
+        time: 1545109421  // timestamp
+      }, {
+        ID: 102,
+        title: '清华大学录取通知书',
+        channel: 'domestic',
+        time: 1463981682
+      }, {
+        ID: 103,
+        title: '美国发射太空卫星',
+        channel: 'international',
+        time: 1463983643
+      }, {
+        ID: 104,
+        title: '英国和伊拉克展开战争',
+        channel: 'war',
+        time: 1545109421
+      }],
+      channels: {
+        index: '首页新闻',
+        domestic: '国内新闻',
+        international: '国际新闻',
+        war: '战争新闻'
+      }
+    },
+    methods: {
+      date: function(time) {
+        let oDate = new Date(time);
+
+        // 后端给的时间戳以秒为单位，在前端需要做相应处理(Eg: timestamp * 1000)
+        // javascript当中，以毫秒为单位
+
+        return oDate.getFullYear() + '-' + (oDate.getMonth() + 1) + '-' + oDate.getDate();
+      }
+    }
+  });
+  </script>
+</body>
+</html>

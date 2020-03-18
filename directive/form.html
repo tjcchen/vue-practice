@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Vue - Submit Form</title>
+  <script type="text/javascript" src="../vue.js"></script>
+</head>
+<body>
+  <form action="#">
+    Username: <input type="text" v-model="username"><br/>
+    {{ username }}
+    <br/>
+    Password: <input type="password" v-model="password"><br/>
+    {{ password }}
+    <br/>
+
+    <button type="submit" v-bind:disabled="!username || !password">Submit</button>
+  </form>
+
+  <script type="text/javascript">
+    let vm = new Vue({
+      el: 'form',
+      data: {
+        username: '',
+        password: ''
+      }
+    });
+  </script>
+</body>
+</html>
