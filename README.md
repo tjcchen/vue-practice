@@ -1,1 +1,1 @@
-<h3 style="color:orange;">This is a personal project for vue.js practice purpose</h3>
+<h2 style="color:orange;text-decoration:underline;">This is a personal vue.js practice project</h2>
