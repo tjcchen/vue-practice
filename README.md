@@ -10,3 +10,8 @@ It is designed from the ground up to be incrementally adoptable, and can easily 
 <p>
 <a target="_blank" href="https://vuejs.org/v2/examples/">Live Examples</a> and <a target="_blank" href="https://vuejs.org/v2/guide/">docs</a>, please visit <a target="_blank" href="https://vuejs.org">vuejs.org</a>
 </p>
+
+<h2>Contact</h2>
+<p>
+Email: <a href="mailto:chenyangpoppin@gmail.com">chenyangpoppin@gmail.com</a>
+</p>
