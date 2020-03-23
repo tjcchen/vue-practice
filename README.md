@@ -1,1 +1,1 @@
-<h2>vue.js practice project</h2>
+<h2>Vue.js practice project</h2>
