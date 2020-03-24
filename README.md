@@ -16,5 +16,5 @@
 
 <h2>Contact</h2>
 <p>
-  Email: <a href="mailto:chenyangpoppin@gmail.com">chenyangpoppin@gmail.com</a>
+  Email: <a href="mailto:chenyangpoppin[AT]gmail.com">chenyangpoppin@gmail.com</a>
 </p>
