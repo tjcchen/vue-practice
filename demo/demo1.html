@@ -13,7 +13,6 @@
 
       <!-- button type="button" v-on:click="fn()">Add</button -->
     </div>
-
   </div>
 
   <script type="text/javascript">
@@ -26,12 +25,17 @@
 
       methods: {
         fn: function(){
-
           this.age++;
-        
         }
       },
     });
+
+    // Monitor value changes
+    vm.$watch('name', function(newVal, oldVal) {
+      console.log(newVal, oldVal);
+    });
+
+    vm.$data.name = 'Peter';  // Change initial value "Andy" -> "Peter"
   </script>
 </body>
 </html>
