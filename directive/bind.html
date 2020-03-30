@@ -6,7 +6,13 @@
 </head>
 <body>
 
-  <div id="root" v-bind:title="a">hello world {{ a }} {{ c }}</div>
+  <div id="root">
+    
+    <p v-bind:title="a">hello world {{ a }} {{ b }} {{ c }}</p>
+
+    <p v-bind:title="message">Please hover over this text</p>
+
+  </div>
 
   <script type="text/javascript">
     let vm = new Vue({
@@ -14,9 +20,13 @@
       data: {
         a: 3,
         b: 5,
-        c: 6
+        c: 6,
+        message: 'You loaded this page on: ' + new Date().toLocaleString(),
       }
     });
+
+    console.log('Print out message to console(direct): ' + vm.message);
+    console.log('Print out message to console(via data):' + vm.$data.message);
   </script>
 </body>
 </html>

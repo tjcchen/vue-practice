@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Vue - two-way binding</title>
+  <script type="text/javascript" src="../vue.js"></script>
+</head>
+<body>
+
+  <div id="root">
+    <p>{{ message }}</p>
+
+    <input type="text" v-model:value="message" />
+  </div>
+
+  <script type="text/javascript">
+    let vm = new Vue({
+      el: '#root',
+      data: {
+        message: 'Hello Vue.js!'
+      }
+    });
+  </script>
+</body>
+</html>
