@@ -1,16 +1,16 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Vue model - 双向数据绑定</title>
+  <title>Vue model - Two way binding</title>
   <script type="text/javascript" src="../vue.js"></script>
 </head>
 <body>
-  <h2>这是视图层</h2> 
+  <h2>View Layer</h2> 
 
   <div id="root">
     <input type="checkbox" v-model="checked">I Agree <br/>
 
-    {{ checked }}
+    {{ checked }} <br/>
 
     <button type="button" v-bind:disabled="!checked">Submit</button>
   </div>
@@ -19,7 +19,7 @@
     let vm = new Vue({
       el: '#root',
 
-      // data中包含的数据是模型层/数据层
+      // data layer/model layer is contained within data attribute
       data: {
         checked: false
       }

@@ -35,12 +35,12 @@
 <body>
   <div class="tmall" id="tmall">
     <div class="tmall-tabs">
-      <!-- div v-bind:class="'tab pointer current'">充话费</div -->
+      <!-- div v-bind:class="'tab pointer current'">TAB1</div -->
 
-      <!-- div :class="currIndex == 0 ? 'tab pointer current' : 'tab pointer'" @click="currIndex = 0">充话费</div>
-      <div :class="currIndex == 1 ? 'tab pointer current' : 'tab pointer'" @click="currIndex = 1">充流量</div>
-      <div :class="currIndex == 2 ? 'tab pointer current' : 'tab pointer'" @click="currIndex = 2">充固话</div>
-      <div :class="currIndex == 3 ? 'tab pointer current' : 'tab pointer'" @click="currIndex = 3">充宽带</div -->
+      <!-- div :class="currIndex == 0 ? 'tab pointer current' : 'tab pointer'" @click="currIndex = 0">TAB1</div>
+      <div :class="currIndex == 1 ? 'tab pointer current' : 'tab pointer'" @click="currIndex = 1">TAB2</div>
+      <div :class="currIndex == 2 ? 'tab pointer current' : 'tab pointer'" @click="currIndex = 2">TAB3</div>
+      <div :class="currIndex == 3 ? 'tab pointer current' : 'tab pointer'" @click="currIndex = 3">TAB4</div -->
       
       <div v-for="(itm, idx) in tabs"
            :class="currIndex == idx ? 'tab pointer current' : 'tab pointer'"
@@ -50,8 +50,8 @@
     <div class="tmall-tabbody-container">
       <!-- div class="tmall-tabbodys" :style="'left: '+ left +'px'" -->
 
-      <!-- 注意下面这种写法, 往vbind中仍json串 -->
-      <!-- ES6当中, 当key和value是同一个时, value可以省略. Eg: { left : left } to { left } -->
+      <!-- Json format data can be included as follows in Vue attributes -->
+      <!-- In ES6, when key and value are same, the value can be omitted. Eg: { left : left } to { left } -->
       <div class="tmall-tabbodys" :style="{ left: left + 'px' }">
         <div class="tabbody green">GREEN</div>
         <div class="tabbody yellow">YELLOW</div>
@@ -67,7 +67,7 @@
       data: {
         currIndex: 0,
         left: 0,
-        tabs: ['充话费', '充流量', '充固话', '充宽带']
+        tabs: ['TAB1', 'TAB2', 'TAB3', 'TAB4']
       }
     });
   </script>
