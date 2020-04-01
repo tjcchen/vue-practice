@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Vue Freeze</title>
+  <script type="text/javascript" src="../vue.js"></script>
+</head>
+<body>
+
+  <div id="root">
+    <div>{{ foo }}</div>
+
+    <!-- By adding freeze manipulation, it will not update 'foo' -->
+    <button v-on:click="foo = 'drink'">Change it!</button>
+  </div>
+
+  <script type="text/javascript">
+    let obj = {
+      foo: 'bar'
+    };
+
+    Object.freeze(obj);  // Freeze obj
+
+    let vm = new Vue({
+      el: '#root',
+      data: obj
+    });
+  </script>
+</body>
+</html>
