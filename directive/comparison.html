@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Vue Comparison Between Data and Prefix $ Attributes</title>
+  <script type="text/javascript" src="../vue.js"></script>
+</head>
+<body>
+
+  <div id="root"></div>
+
+  <script type="text/javascript">
+    let data = { a : 1 };
+
+    let vm = new Vue({
+      el: '#root',
+      data: data
+    });
+
+    console.log(vm.$data === data);  // true
+
+    console.log(vm.$el === document.getElementById('root'));  // true
+
+    // $watch is an instance method
+    vm.$watch('a', function(newVal, oldVal) {
+
+      // This callback will be invoked when `vm.a` changes
+      console.log('newVal:' + newVal + ', oldVal:' + oldVal);
+
+    });
+
+    vm.a = 999;  // Change value 'a'
+  </script>
+</body>
+</html>
