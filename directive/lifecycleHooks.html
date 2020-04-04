@@ -31,6 +31,9 @@
       // However, the mounting phase has not been started, and the $el property will not be available yet.
       created: function() {
         console.log('Created');
+
+        // Note this points to vm instance
+        console.log('msg: ' + this.msg);
       },
 
       // Called right before the mounting begins: the render function is about to be called for the first time.
