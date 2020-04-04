@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Vue Lifecycle Hooks</title>
+  <script type="text/javascript" src="../vue.js"></script>
+</head>
+<body>
+
+  <h2>Documentation: https://vuejs.org/v2/api/#Options-Lifecycle-Hooks</h2>
+  <h2>Lifecycle Diagram: https://vuejs.org/v2/guide/instance.html#Lifecycle-Diagram</h2>
+
+  <div id="root">{{ msg }}</div>
+
+  <script type="text/javascript">
+    let vm = new Vue({
+      el: '#root',
+
+      data: {
+       msg: 'Hello Vue.js'
+      },
+
+      // Called synchronously immediately after the instance has been initialized,
+      // before data observation and event/watcher setup.
+      beforeCreate: function() {
+        console.log('Before Create');
+      },
+
+      // Called synchronously after the instance is created.
+      // At this stage, the instance has finished processing the options which means
+      // the following have been set up: data observation, computed properties, methods, watch/event callbacks.
+      // However, the mounting phase has not been started, and the $el property will not be available yet.
+      created: function() {
+        console.log('Created');
+      },
+
+      // Called right before the mounting begins: the render function is about to be called for the first time.
+      // This hook is not called during server-side rendering.
+      beforeMount: function() {
+        console.log('Before Mount');
+      },
+
+      // Called after the instance has been mounted, where el is replaced by the newly created vm.$el.
+      // If the root instance is mounted to an in-document element,
+      // vm.$el will also be in-document when mounted is called.
+
+      // Note that mounted does not guarantee that all child components have also been mounted.
+      // If you want to wait until the entire view has been rendered, you can use vm.$nextTick inside of mounted
+      mounted: function() {
+        console.log('Mounted');
+
+        this.$nextTick(function() {
+          // Code that will run only after the entire view has been rendered
+          console.log('Entire view has been rendered');
+        });
+      },
+
+      // Called when data changes, before the DOM is patched.
+      // This is a good place to access the existing DOM before an update,
+      // e.g. to remove manually added event listeners.
+      beforeUpdate: function() {
+        console.log('Before Update');
+      },
+
+      // Called after a data change causes the virtual DOM to be re-rendered and patched. Eg: Change data values
+      // The component’s DOM will have been updated when this hook is called,
+      // so you can perform DOM-dependent operations here.
+      // However, in most cases you should avoid changing state inside the hook.
+      // To react to state changes, it’s usually better to use a computed property or watcher instead.
+      
+      // Note that updated does not guarantee that all child components have also been re-rendered.
+      // If you want to wait until the entire view has been re-rendered, you can use vm.$nextTick inside of updated:
+      updated: function() {
+        console.log('Updated');
+
+        this.$nextTick(function() {
+          // Code that will run only after the entire view has been re-rendered
+          console.log('Entire view has been re-rendered');
+        });
+      }
+    });
+
+    // Change message value after 3 seconds
+    setTimeout(function() { vm.msg = 'Changing...'; }, 3000);
+  </script>
+</body>
+</html>
