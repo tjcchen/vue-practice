@@ -21,6 +21,11 @@
 
       // Called synchronously immediately after the instance has been initialized,
       // before data observation and event/watcher setup.
+      
+      // Don’t use arrow functions on an options property or callback,
+      // such as created: () => console.log(this.a) or vm.$watch('a', newValue => this.myMethod())
+      // Since an arrow function doesn’t have a this,
+      // this will be treated as any other variable and lexically looked up through parent scopes until found
       beforeCreate: function() {
         console.log('Before Create');
       },
