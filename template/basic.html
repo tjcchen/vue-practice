@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Basic Vue Template</title>
+  <script type="text/javascript" src="../vue.js"></script>
+</head>
+<body>
+  <div id="root">
+    <h2>Vue.js is using the “Mustache” syntax (double curly braces)</h2>
+    <div>
+      <p>Message1: {{ msg1 }}</p>
+      <p v-once>Message2: {{ msg2 }}</p>
+      <p>Using mustache: {{ rawHtml }}</p>
+      <p>Using v-html directive: <span v-html="rawHtml"></span></p>
+    </div>
+
+    <h2>Vue Attributes</h2>
+    <div>
+      <div v-bind:id="dynamicId">{{ dynamicId }}</div>
+      <button v-bind:disabled="isButtonDisabled">Button</button>
+    </div>
+
+    <h2>Javascript Expressions Supportive</h2>
+    <div>
+      <p>{{ number + 1 }}</p>
+      <p>{{ ok ? 'Yes' : 'No' }}</p>
+      <p>{{ message.split('').reverse().join('') }}</p>
+
+      <!-- Dynamic ID attribute -->
+      <p v-bind:data-id="'list-' + dynamicId">list-{{ dynamicId }}</p>
+
+      <!-- Each binding can only contain one single expression, thus the following will NOT work -->
+
+      <!-- this is a statement, not an expression: -->
+      <!-- {{ var a = 1 }} -->
+
+      <!-- flow control won't work either, use ternary expressions -->
+      <!-- {{ if (ok) { return message } }} -->
+    </div>
+  </div>
+
+  <script type="text/javascript">
+    let vm = new Vue({
+      el: '#root',
+      data: {
+        msg1: 'Hello Vue.js v1',
+        msg2: 'Hello Vue.js v2',  // Use v-once to perform one-time interpolations
+
+        // raw Html node
+        rawHtml: '<span style="color:red;">Hello Raw Html Text</span>',
+        dynamicId: 100,
+
+        // If 'isButtonDisabled' is null, undefined, or false,
+        // the disabled attribute will not even be included in button element
+        isButtonDisabled: null,
+        number: 10,
+        ok: true,
+        message: 'Please reverse this line of text!',
+      }
+    });
+
+    vm.msg1 = "Change msg1 value";  // Will work
+    vm.msg2 = "This change does not work";  // Not work
+  </script>
+</body>
+</html>
