@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Basic Computed Properties</title>
+  <script type="text/javascript" src="../vue.js"></script>
+</head>
+<body>
+  <div id="root">
+    <p>Original Message: "{{ message }}"</p>
+    <p>Computed reversed message: "{{ reversedMessage }}"</p>
+    <p>Computed double number: "{{ numberDouble }}"</p>
+    <p>Reversed Message: "{{ reversedMessage1() }}"</p>
+    <p>Current time: "{{ now }}"</p>
+  </div>
+
+  <script type="text/javascript">
+    let vm = new Vue({
+      el: '#root',
+      data: {
+        message: 'Hello',
+        number: 10
+      },
+
+      methods: {
+        // Method name cannot be the same as computed property
+        reversedMessage1: function() {
+          return this.message.split('').reverse().join('');
+        }
+      },
+
+      // Computed properties to be mixed into the Vue instance.
+      // All getters and setters have their this context automatically bound to the Vue instance.
+      // Computed properties will be cached by the browsers.
+      // In cases where you do not want caching, use a method instead.
+      computed: {
+        // A computed getter
+        reversedMessage: function() {
+          // this points to the vm instance
+          // put your code logic at this place, not in the html
+          return this.message.split('').reverse().join('');
+        },
+
+        numberDouble: vm => vm.number * 2,
+
+        numberPlus: {
+
+          set: function(nNumber) {
+            this.number = nNumber - 1;
+          },
+
+          get: function() {
+            return this.number + 1;
+          }
+
+        },
+        
+        // The following computed property will never update, because Date.now() is not a reactive dependency
+        now: function() {
+          return Date.now();
+        }
+      }
+    });
+  </script>
+</body>
+</html>
