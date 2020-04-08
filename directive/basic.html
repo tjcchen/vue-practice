@@ -14,6 +14,7 @@
     <div @click="click1">
       <!-- Click event stop propagation -->
       <!-- @click is a simple format of v-on:click -->
+      <!-- Eg: other modifier <form v-on:submit.prevent="onSubmit">...</form> -->
       <div @click.stop="click2">Click Me!</div>
     </div>
   </div>
