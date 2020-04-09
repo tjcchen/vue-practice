@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Basic Vue Template</title>
+  <script type="text/javascript" src="../vue.js"></script>
+</head>
+<body>
+  <div id="root">{{ fullName }}</div>
+
+  <div id="app">{{ wholeName }}</div>
+
+  <script type="text/javascript">
+    // Monitor property change with watch callback
+    let vm = new Vue({
+      el: '#root',
+      data: {
+        firstName: 'Foo',
+        lastName: 'Bar',
+        fullName: 'Foo Bar'
+      },
+      watch: {
+        firstName: function(val) {
+          this.fullName = val + ' ' + this.lastName;
+        },
+        lastName: function(val) {
+          this.fullName = this.firstName + ' ' + val;
+        }
+      }
+    });
+
+    // Using computed properties to monitor value changes
+    let app = new Vue({
+      el: '#app',
+      data: {
+        givenName: 'Andy',
+        familyName: 'Chen'
+      },
+      computed: {
+        wholeName: function() {
+          return this.givenName + ' ' + this.familyName;
+        }
+      }
+    });
+  </script>
+</body>
+</html>
