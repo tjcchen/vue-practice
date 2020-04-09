@@ -9,9 +9,29 @@
     <!-- Dynamic class with Json object -->
     <div
       class="border"
-      v-bind:class="{ active: isActive, green: isGreen }"
+      v-bind:class="{ active: isActive, green: isGreen, 'text-dander': hasError }"
       style="width:200px; height:200px; text-align:center; line-height:200px;">
       Dynamic Class!
+    </div>
+
+    <br/>
+
+    <!-- Dynamic object class -->
+    <div
+      class="border"
+      v-bind:class="classObject"
+      style="width:200px; height:200px; text-align:center; line-height:200px;">
+      Dynamic Object Class!
+    </div>
+
+    <br/>
+
+    <!-- Dynamic computed object class -->
+    <div
+      class="border"
+      v-bind:class="classObjectComputed"
+      style="width:200px; height:200px; text-align:center; line-height:200px;">
+      Computed Object Class!
     </div>
 
     <br/>
@@ -41,11 +61,30 @@
     let vm = new Vue({
       el: '#root',
       data: {
+        error: null,
         isActive: true,  // class and v-bind:class can co-exist
         isGreen: true,
         isRed: true,
         color: '#cccccc',
-        size: '50px'
+        size: '50px',
+        hasError: false,
+
+        // The bound object doesn’t have to be inline
+        classObject: {
+          active: true,
+          'text-dander': true
+        }
+      },
+
+      computed: {
+
+        classObjectComputed: function() {
+          return {
+            active: this.isActive && !this.error,
+            'text-danger': this.error && this.error.type === 'fatal'
+          }
+        }
+
       }
     });
   </script>
