@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Vue Dynamic Class and Style</title>
+  <script type="text/javascript" src="../vue.js"></script>
+</head>
+<body>
+  <div id="root">
+    <!-- Dynamic class with Json object -->
+    <div
+      class="border"
+      v-bind:class="{ active: isActive, green: isGreen }"
+      style="width:200px; height:200px; text-align:center; line-height:200px;">
+      Dynamic Class!
+    </div>
+
+    <br/>
+
+    <!-- Dynamic class with array -->
+    <div
+      class="border"
+      v-bind:class="[ isActive ? 'active' : '', isGreen ? 'green' : '']"
+      style="width:200px; height:200px; text-align:center; line-height:200px;">
+      Dynamic Class!
+    </div>
+
+    <br/>
+
+    <!-- Dynamic style with Json object -->
+    <div :style="{ color: color, fontSize: size, background: isRed ? '#f00' : '' }">
+      Dynamic Style!
+    </div>
+  </div>
+
+  <style type="text/css">
+  .active { background: #ff0000; }
+  .green { color: #00ff00; }
+  .border { border: 1px solid #0000ff; }
+  </style>
+  <script type="text/javascript">
+    let vm = new Vue({
+      el: '#root',
+      data: {
+        isActive: true,  // class and v-bind:class can co-exist
+        isGreen: true,
+        isRed: true,
+        color: '#cccccc',
+        size: '50px'
+      }
+    });
+  </script>
+</body>
+</html>
