@@ -6,8 +6,8 @@
 </head>
 <body>
   <div id="root">
-    <div v-for="(value, key) in numArr">
-      {{ key }} - {{ value }}
+    <div v-for="(value, index) in numArr" :key="index">
+      {{ index }} - {{ value }}
     </div>
 
     <br/>
@@ -17,10 +17,19 @@
     <br/>
 
     <ol>
-      <li v-for="user in users">
+      <li v-for="user in users" :key="user.name">
         username: {{ user.name }}, password: {{ user.password }}
       </li>
     </ol>
+
+    <!-- When iterating over an object, the order is based on the enumeration order of Object.keys(),       -->
+    <!-- which is not guaranteed to be consistent across JavaScript engine implementations.                 -->
+    <!-- It is recommended to provide a key attribute with v-for whenever possible, unless the iterated DOM -->
+    <!-- content is simple, or you are intentionally relying on the default behavior for performance gains. -->
+    <!-- Please use string or numeric values as key identifier.                                             -->
+    <ul>
+      <li v-for="(value, key, index) in object" :key="key">{{ index }} - {{ key }} - {{ value }}</li>
+    </ul>
   </div>
 
   <script type="text/javascript">
@@ -32,7 +41,12 @@
           { name: 'jackie', password: '123456' },
           { name: 'tony', password: '234567' },
           { name: 'andy', password: '345678' }
-        ]
+        ],
+        object: {
+          title: 'How to do lists in Vue',
+          author: 'Andy Chen',
+          publishedAt: '2020-04-10'
+        }
       }
     });
   </script>
