@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Dynamic Class With Component</title>
+  <script type="text/javascript" src="../vue.js"></script>
+</head>
+<body>
+  <div id="root">
+    <!-- The following component has a class "foo bar baz boo isActive" -->
+    <my-component class="baz boo" :class="{ active: isActive }" :style="styleObject"></my-component>
+  </div>
+
+  <style type="text/css">
+  .active { color: #ff0000; }
+  </style>
+  <script type="text/javascript">
+    Vue.component('my-component', {
+      template: '<p class="foo bar">Hi</p>'
+    });
+
+    let vm = new Vue({
+      el: '#root',
+      data: {
+        isActive: true,
+        styleObject: {
+          background: '#ccc',
+          fontSize: '20px',
+          // CSS3 style attributes will be automatically adding auto-prefixing
+          transform: 'rotate(180deg)',
+          // We can provide an array of multiple (prefixed) values to a style property
+          // In this example, it will render display: flex for browsers that support the unprefixed version of flexbox
+          display: ['-webkit-box', '-ms-flexbox', 'flex']
+        }
+      }
+    });
+  </script>
+</body>
+</html>
