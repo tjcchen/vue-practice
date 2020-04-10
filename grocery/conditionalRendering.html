@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Vue Conditional Rendering</title>
+  <script type="text/javascript" src="../vue.js"></script>
+</head>
+<body>
+  <div id="root">
+    <!-- In general, v-if has higher toggle costs while v-show has higher initial render costs. -->
+    <!-- So prefer v-show if you need to toggle something very often, -->
+    <!-- and prefer v-if if the condition is unlikely to change at runtime. -->
+    <div v-if="type === 'A'">
+      A
+    </div>
+    <div v-else-if="type === 'B'">
+      B
+    </div>
+    <div v-else-if="type === 'C'">
+      C
+    </div>
+    <div v-else>
+      Not A/B/C
+    </div>
+
+    <!-- Note that v-show doesn’t support the <template> element, nor does it work with v-else -->
+    <div v-show="ok">Hi Vue!</div>
+    
+    <!-- Note: if you don't want to reuse placeholder value you need to add key attribute to the input element -->
+    <div class="toggle-login-type">
+      <template v-if="loginType === 'username'">
+        <label>Username</label>
+        <input placeholder="Enter your username" key="username-input">
+      </template>
+      <template v-else>
+        <label>Email</label>
+        <input placeholder="Enter your email address" key="email-input">
+      </template>
+      <button @click="toggleLogin">Toggle Login Type</button>
+    </div>
+
+    <!-- Important: Using v-if and v-for together is not recommended. -->
+    <!-- When used together with v-if, v-for has a higher priority than v-if. -->
+  </div>
+
+  <script type="text/javascript">
+    let vm = new Vue({
+      el: '#root',
+      data: {
+        type: 'C',
+        ok: false,  // v-show directive will diaplay element anyway, no matter true or false
+        loginType: 'username'
+      },
+      methods: {
+        toggleLogin: function() {
+          this.loginType === 'username' ? this.loginType = 'email' : this.loginType = 'username';
+        }
+      }
+    });
+  </script>
+</body>
+</html>
