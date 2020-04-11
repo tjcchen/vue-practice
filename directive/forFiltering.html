@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Vue for filtering manipulation</title>
+  <script type="text/javascript" src="../vue.js"></script>
+</head>
+<body>
+  <div id="root">
+    <!-- Computed Properties -->
+    <p v-for="n in evenNumbers">{{ n }}</p>
+
+    <!-- Methods: even() is a method -->
+    <ul v-for="set in sets">
+      <li v-for="n in even(set)">{{ n }}</li>
+    </ul>
+
+    <!-- v-for with a range: it can also take an intege -->
+    <!-- The result is: 12345678910                     -->
+    <div>
+      <span v-for="n in 10">{{ n }}</span>
+    </div>
+
+    <!-- Note that it’s not recommended to use v-if and v-for together -->
+  </div>
+
+  <script type="text/javascript">
+    let vm = new Vue({
+      el: '#root',
+      data: {
+        numbers: [1, 2, 3, 4, 5],
+        sets: [[1, 2, 3, 4, 5], [6, 7, 8, 9, 10]]
+      },
+      computed: {
+        evenNumbers: function() {
+          return this.numbers.filter(function(number) {
+            return number % 2 === 0;
+          });
+        }
+      },
+      methods: {
+        even: function(set) {
+          return set.filter(function(number) {
+            return number % 2 === 0;
+          });
+        }
+      }
+    });
+  </script>
+</body>
+</html>
