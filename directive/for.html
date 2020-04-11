@@ -12,11 +12,13 @@
 
     <br/>
 
+    <!-- The array can be manipulated by various methods: push(), pop(), shift(), unshift(), splice(), sort(), reverse() -->
     <div v-for="item in numArr">{{ item }}</div>
 
     <br/>
 
     <ol>
+      <!-- vm.users.push({ name: 'jason', password: 333333 }), the users array can be added later on -->
       <li v-for="user in users" :key="user.name">
         username: {{ user.name }}, password: {{ user.password }}
       </li>
@@ -31,6 +33,14 @@
       <li v-for="(value, key, index) in object" :key="key">{{ index }} - {{ key }} - {{ value }}</li>
     </ul>
   </div>
+
+  <!-- Non mutating methods: filter, concat, slice. These methods will not the original array -->
+  <!--
+    example1.items = example1.items.filter(function (item) {
+      return item.message.match(/Foo/)
+    })
+  -->
+  <!-- Due to limitations in JavaScript, there are types of changes that Vue cannot detect with arrays and objects. -->
 
   <script type="text/javascript">
     let vm = new Vue({
