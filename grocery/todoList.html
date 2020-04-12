@@ -17,6 +17,7 @@
     </form>
 
     <ul>
+      <!-- Pay attention to this 'is' usage, it can be replaced by the following format -->
       <li
         is="todo-item"
         v-for="(todo, index) in todos"
@@ -24,6 +25,13 @@
         v-bind:title="todo.title"
         v-on:remove="todos.splice(index, 1)"
       ></li>
+
+      <!-- todo-item
+        v-for="(todo, index) in todos"
+        v-bind:key="todo.id"
+        v-bind:title="todo.title"
+        v-on:remove="todos.splice(index, 1)"
+      ></todo-item -->
     </ul>
   </div>
 
@@ -57,11 +65,11 @@
       methods: {
         addNewTodo: function() {
           this.todos.push({
-            id: this.nextTodoId++,
-            title: this.newTodoText
+            id: this.nextTodoId++,  // Used as id identifier
+            title: this.newTodoText  // Assign current newTodoText
           });
 
-          this.newTodoText = '';
+          this.newTodoText = '';  // After that clear the newTodoText, and awaiting user's input
         }
       }
     });
