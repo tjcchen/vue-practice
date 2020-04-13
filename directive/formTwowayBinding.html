@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Vue Form Two-way Binding</title>
+  <script type="text/javascript" src="../vue.js"></script>
+</head>
+<body>
+  <div id="root">
+    <!-- v-model internally uses different properties and emits different events for different input elements: -->
+    <!-- text and textarea elements use value property and input event;     -->
+    <!-- checkboxes and radiobuttons use checked property and change event; -->
+    <!-- select fields use value as a prop and change as an event.          -->
+    <div>
+      <span>Singleline message is: </span>
+      <input v-model="message" place="Please Edit Me!">
+      <p>Message is: {{ message }}</p>
+    </div>
+
+    <div>
+      <span>Multiline message is: </span>
+      <br/>
+      <textarea v-model="textareaMessage" placeholder="Please Add Multiple Lines of Message"></textarea>
+      <p style="white-space: pre-line;">Textarea message is:<br/> {{ textareaMessage }}</p>
+    </div>
+
+    <div>
+      <input type="checkbox" id="Jack" value="Jack" v-model="checkedNames">
+      <label for="Jack">Jack</label>
+      <input type="checkbox" id="John" value="John" v-model="checkedNames">
+      <label for="John">John</label>
+      <input type="checkbox" id="Mike" value="Mike" v-model="checkedNames">
+      <label for="Mike">Mike</label>
+      <p>Checked Names: {{ checkedNames }}</p>
+    </div>
+
+    <div>
+      <input type="radio" id="One" value="One" v-model="picked">
+      <label for="One">One</label>
+      <input type="radio" id="Two" value="Two" v-model="picked">
+      <label for="Two">Two</label>
+      <p>Picked: {{ picked }}</p>
+    </div>
+
+    <!-- We you are using select element, it is recommended to provide a disabled -->
+    <!-- option with an empty value, as demonstrated in the example above.        -->
+    <div>
+      <select v-model="selected">
+        <option disabled value="">Please select one</option>
+        <option>A</option>
+        <option>B</option>
+        <option>C</option>
+      </select>
+      <p>Selected: {{ selected }}</p>
+    </div>
+
+    <button @click="submit">Submit</button>
+  </div>
+
+  <script type="text/javascript">
+    let vm = new Vue({
+      el: '#root',
+      data: {
+        message: '',
+        textareaMessage: '',
+        checkedNames: [],
+        picked: '',
+        selected: ''
+      },
+      methods: {
+        submit: function() {
+          let submitMessage = {
+            message: this.message,
+            textareaMessage: this.textareaMessage,
+            checkedNames: this.checkedNames,
+            picked: this.picked,
+            selected: this.selected
+          };
+          console.log(submitMessage);  // Print out message to the console
+        }
+      }
+    });
+  </script>
+</body>
+</html>
