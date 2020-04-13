@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Vue Dynamic Select Options and Form Data Usages</title>
+  <script type="text/javascript" src="../vue.js"></script>
+</head>
+<body>
+  <div id="root">
+    <select v-model="selected">
+      <option disabled value="">Please select one</option>
+      <option v-for="option in options" :value="option.value">
+        {{ option.text }}
+      </option>
+    </select>
+    <p>Selected: {{ selected }}</p>
+
+    <div>
+      <!-- `picked` is a string "a" when checked -->
+      <input type="radio" id="A" v-model="picked" value="A">
+      <label for="A">A</label>
+    </div>
+
+    <div>
+      <!-- `toggle` is either true or false, define toggle values with 'yes' or 'no' -->
+      <input type="checkbox" id="Jason" v-model="toggle" true-value="yes" false-value="no">
+      <label for="Jason">Jason</label>
+    </div>
+
+    <div>
+      <select v-model="chose">
+        <!-- inline object literal -->
+        <!-- when selected: typeof vm.selected // => 'object'; vm.selected.number // => 123 -->
+        <option v-bind:value="{ number: 123 }">123</option>
+      </select>
+    </div>
+
+    <div>
+      <!-- Return empty string when the value is not a number -->
+      Please enter number: <input v-model.number="age" type="number">
+    </div>
+
+    <div>
+      <!-- Lazy and Trim of two way binding -->
+      <!-- Synced after "change" instead of "input" -->
+      Lazy message: <input v-model.lazy.trim="msg">
+    </div>
+  </div>
+
+  <script type="text/javascript">
+    let vm = new Vue({
+      el: '#root',
+      data: {
+        selected: '',
+        picked: '',
+        toggle: 'no',
+        chose: '',
+        age: '',
+        msg: '',
+        options: [
+          { text: 'One', value: 'A' },
+          { text: 'Two', value: 'B' },
+          { text: 'Three', value: 'C' }
+        ]
+      }
+    });
+  </script>
+</body>
+</html>
