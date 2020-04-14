@@ -1,14 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Vue Component Basic Example</title>
+  <title>Vue Component Event</title>
   <script type="text/javascript" src="../vue.js"></script>
 </head>
 <body>
   <div id="root">
-    <button-counter title="btn1"></button-counter>
-    <button-counter title="btn2"></button-counter>
-    <button-counter title="btn3"></button-counter>
+    <button-counter title="btn1" @clicknow="clicknow"></button-counter>
   </div>
 
   <script type="text/javascript">
@@ -20,16 +18,38 @@
           count: 0
         }
       },
+
       // Adding component attribute with 'props'
       props: ['title'],
+
       // Use div to include multiple html elements
-      template: '<div><h1>{{ title }}</h1><button v-on:click="count++" :title="title">You clicked me {{ count }} times</button></div>'
+      template: '\
+        <div>\
+          <h1>{{ title }}</h1>\
+          <button v-on:click="addCount" :title="title">You clicked me {{ count }} times</button>\
+        </div>\
+      ',
+      
+      methods: {
+        addCount: function() {
+          this.count++;
+
+          // Trigger clicknow event which is defined in component element
+          this.$emit('clicknow', this.count);
+        }
+      }
+    
     });
 
     let vm = new Vue({
       el: '#root',
       data: {
         flag: true
+      },
+      methods: {
+        clicknow: function(count) {
+          console.log('current count is: ' + count);
+        }
       }
     });
   </script>
