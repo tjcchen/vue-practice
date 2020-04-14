@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Vue Component Slot</title>
+  <script type="text/javascript" src="../vue.js"></script>
+</head>
+<body>
+  <div id="root">
+    <button-counter title="btn1">
+      <p>Using slot to insert this P element to the component</p>
+    </button-counter>
+  </div>
+
+  <script type="text/javascript">
+    Vue.component('button-counter', {
+      // Use Js closure to expand prototype chain
+      // If Vue didn’t use function rule, clicking on one button would affect the data of all other instances
+      data: function() {
+        return {
+          count: 0
+        }
+      },
+
+      // Adding component attribute with 'props'
+      props: ['title'],
+
+      // Use div to include multiple html elements
+      template: '\
+        <div>\
+          <h1>{{ title }}</h1>\
+          <slot></slot>\
+          <button v-on:click="count++" :title="title">You clicked me {{ count }} times</button>\
+        </div>\
+      ',
+    
+    });
+
+    new Vue({ el: '#root' });
+  </script>
+</body>
+</html>

@@ -35,6 +35,7 @@
           this.count++;
 
           // Trigger clicknow event which is defined in component element
+          // Note that this clicknow is a self-defined event
           this.$emit('clicknow', this.count);
         }
       }
@@ -48,11 +49,10 @@
       },
 
       methods: {
-
+        // The count parameter, namely args, can be parsed in by this.$emit(eventName, args);
         clicknow: function(count) {
           console.log('current count is: ' + count);
         }
-        
       }
     });
   </script>
