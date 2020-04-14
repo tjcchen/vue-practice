@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Vue Blog Post Component</title>
+  <script type="text/javascript" src="../vue.js"></script>
+</head>
+<body>
+  <div id="root">
+    <blog-post 
+      v-for="blog in blogs"
+      v-bind:key="blog.id"
+      v-bind:post="blog"
+    ></blog-post>
+  </div>
+
+  <script type="text/javascript">
+    Vue.component('blog-post', {
+      data: function() {
+        return {
+          className: 'blog-post'
+        };
+      },
+
+      props: ['post'],  // Use an object as props attribute
+
+      template: '\
+        <div :class="className">\
+          <h3>{{ post.title }}</h3>\
+          <div v-html="post.content"></div>\
+          <div>Publish Date: {{ post.publishedAt }}</div>\
+          <div>Comments: {{ post.comments }}</div>\
+        </div>\
+      ',
+    });
+
+    let vm = new Vue({
+      el: '#root',
+      data: {
+        blogs: [
+          { 
+            id: 1, 
+            title: 'Blog 1', 
+            content: '<p>This is first blog</p>', 
+            publishedAt: '2020-04-01', 
+            comments: 'Great'
+          },
+          {
+            id: 2, 
+            title: 'Blog 2', 
+            content: '<p>This is second blog</p>', 
+            publishedAt: '2020-04-02', 
+            comments: 'Awesome'
+          },
+          {
+            id: 3, 
+            title: 'Blog 3', 
+            content: '<p>This is third blog</p>', 
+            publishedAt: '2020-04-03', 
+            comments: 'Terrible'
+          }
+        ]
+      }
+    });
+  </script>
+</body>
+</html>
