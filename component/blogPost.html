@@ -24,7 +24,7 @@
       props: ['post'],  // Use an object as props attribute
 
       template: '\
-        <div :class="className">\
+        <div :class="className" style="border-bottom:3px solid #ccc;">\
           <h3>{{ post.title }}</h3>\
           <div v-html="post.content"></div>\
           <div>Publish Date: {{ post.publishedAt }}</div>\
