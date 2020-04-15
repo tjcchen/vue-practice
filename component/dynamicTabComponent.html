@@ -59,10 +59,12 @@
 
     new Vue({
       el: '#dynamic-component',
+
       data: {
         currentTab: 'Home',
         tabs: ['Home', 'Posts', 'Archive']
       },
+
       computed: {
         currentTabComponent: function() {
           return 'tab-' + this.currentTab.toLowerCase();
