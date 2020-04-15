@@ -6,7 +6,7 @@
 </head>
 <body>
   <div id="root">
-    <alert-box>Something terrible happened.</alert-box>
+    <alert-box :title="msg" :id="ID">Something terrible happened.</alert-box>
   </div>  
 
   <style type="text/css">
@@ -20,17 +20,18 @@
         };
       },
 
-      props: ['keyVal'],
+      props: ['title', 'id'],
 
       template: '\
-        <div :class="className">\
+        <div :class="className" :id="id" :title="title">\
           <strong>Error!</strong>\
           <slot></slot>\
+          {{ title }}\
         </div>\
       '
     });
 
-    new Vue({ el: '#root', data: {  } });
+    new Vue({ el: '#root', data: { msg: 'Oops', ID: 'ctnrId' } });
   </script>
 </body>
 </html>
