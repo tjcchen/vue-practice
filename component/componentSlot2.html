@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Vue Component Slot</title>
+  <script type="text/javascript" src="../vue.js"></script>
+</head>
+<body>
+  <div id="root">
+    <alert-box>Something terrible happened.</alert-box>
+  </div>  
+
+  <style type="text/css">
+  .demo-alert-box { background: #f00; width: 300px; height: 60px; line-height: 60px; text-align: center; color: #fff; }
+  </style>
+  <script type="text/javascript">
+    Vue.component('alert-box', {
+      data: function() {
+        return {
+          className: 'demo-alert-box'
+        };
+      },
+
+      props: ['keyVal'],
+
+      template: '\
+        <div :class="className">\
+          <strong>Error!</strong>\
+          <slot></slot>\
+        </div>\
+      '
+    });
+
+    new Vue({ el: '#root', data: {  } });
+  </script>
+</body>
+</html>
