@@ -6,11 +6,14 @@
 </head>
 <body>
   <div id="root">
-    <blog-post 
-      v-for="blog in blogs"
-      v-bind:key="blog.id"
-      v-bind:post="blog"
-    ></blog-post>
+    <div :style="{ fontSize: postFontSize + 'px' }">
+      <blog-post 
+        v-for="blog in blogs"
+        v-bind:key="blog.id"
+        v-bind:post="blog"
+        v-on:enlarge-text="postFontSize += 1"
+      ></blog-post>
+    </div>
   </div>
 
   <script type="text/javascript">
@@ -23,12 +26,15 @@
 
       props: ['post'],  // Use an object as props attribute
 
+      // Please note that enlarge-text is case sensitive, cannot be written as enlargeText
+      // enlarge-text is a self-defined function
       template: '\
-        <div :class="className" style="border-bottom:3px solid #ccc;">\
+        <div :class="className">\
           <h3>{{ post.title }}</h3>\
           <div v-html="post.content"></div>\
           <div>Publish Date: {{ post.publishedAt }}</div>\
           <div>Comments: {{ post.comments }}</div>\
+          <button v-on:click="$emit(\'enlarge-text\')">Enlarge Text</button>\
         </div>\
       ',
     });
@@ -36,6 +42,7 @@
     let vm = new Vue({
       el: '#root',
       data: {
+        postFontSize: 24,
         blogs: [
           { 
             id: 1, 
