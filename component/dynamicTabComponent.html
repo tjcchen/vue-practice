@@ -38,7 +38,7 @@
       @click="currentTab = tab"
     >
     {{ tab }}
-  </button>
+    </button>
 
   <!-- Component changes when currentTabComponent changes, note the 'v-bind:is' usage -->
   <component v-bind:is="currentTabComponent" class="tab"></component>
