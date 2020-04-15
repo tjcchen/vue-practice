@@ -7,6 +7,7 @@
 <body>
   <div id="root">
     <div :style="{ fontSize: postFontSize + 'px' }">
+      <!-- Note: v-on:enlarge-text can be written as @enlarge-text -->
       <blog-post 
         v-for="blog in blogs"
         v-bind:key="blog.id"
