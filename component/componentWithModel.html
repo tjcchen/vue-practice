@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Vue Component Working with v-model</title>
+  <script type="text/javascript" src="../vue.js"></script>
+</head>
+<body>
+
+  <div id="root">
+    <p>v-model: <input v-model="searchText1"></p>
+    <p>searchText1: {{ searchText1 }}</p>
+
+    <br/>
+
+    <!-- The above usage equals to this: -->
+    <p>input event change: <input :value="searchText2" v-on:input="searchText2 = $event.target.value"></p>
+    <p>searchText2: {{ searchText2 }}</p>
+
+    <br/>
+
+    <!-- Therefore, component working with input event change -->
+    <p>
+      custom input with component:
+      <custom-input :value="searchText3" @input="searchText3 = $event"></custom-input>
+    </p>
+    <p>searchText3: {{ searchText3 }}</p>
+
+    <br/>
+
+    <!-- component with v-model -->
+    <p>
+      custom input with v-model:
+      <custom-input v-model="searchText4"></custom-input>
+    </p>
+    <p>searchText4: {{ searchText4 }}</p>
+  </div>
+
+  <script type="text/javascript">
+    Vue.component('custom-input', {
+      props: ['value'],
+
+      template: '\
+        <input\
+          v-bind:value="value"\
+          v-on:input="$emit(\'input\', $event.target.value)"\
+        >\
+      ',
+    });
+
+    let vm = new Vue({
+      el: '#root',
+      data: {
+        searchText1: '',
+        searchText2: '',
+        searchText3: '',
+        searchText4: ''
+      }
+    });
+  </script>
+</body>
+</html>
