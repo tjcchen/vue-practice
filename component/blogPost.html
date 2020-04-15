@@ -8,11 +8,12 @@
   <div id="root">
     <div :style="{ fontSize: postFontSize + 'px' }">
       <!-- Note: v-on:enlarge-text can be written as @enlarge-text -->
+      <!-- We can access the emitted arguments with $event -->
       <blog-post 
         v-for="blog in blogs"
         v-bind:key="blog.id"
         v-bind:post="blog"
-        v-on:enlarge-text="postFontSize += 1"
+        v-on:enlarge-text="postFontSize += $event"
       ></blog-post>
     </div>
   </div>
@@ -35,7 +36,7 @@
           <div v-html="post.content"></div>\
           <div>Publish Date: {{ post.publishedAt }}</div>\
           <div>Comments: {{ post.comments }}</div>\
-          <button v-on:click="$emit(\'enlarge-text\')">Enlarge Text</button>\
+          <button v-on:click="$emit(\'enlarge-text\', 2)">Enlarge Text</button>\
         </div>\
       ',
     });
