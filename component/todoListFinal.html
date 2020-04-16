@@ -29,7 +29,7 @@
         <li :data-id="id">
           <span v-if="!del">{{ title }}</span>
           <span v-else style="text-decoration:line-through;">{{ title }}</span>
-          <button v-show="!del">Delete</button>
+          <button v-show="!del" @click="clickHandler">Delete</button>
         </li>
       `,
       data: function() {
@@ -38,7 +38,11 @@
         };
       },
       methods: {
+        clickHandler: function() {
+          console.log('clickHandler');
 
+          this.$emit('delete', this.id, this.title);
+        }
       }
     });
 
@@ -77,9 +81,15 @@
             :id="item.id"
             :title="item.title"
             :del="item.del"
+            @delete="deleteHandler"
           ></todo-item>
         </ul>
       `,
+      methods: {
+        deleteHandler: function(deleteId, deleteTitle) {
+          console.log('deleteHandler', deleteId, deleteTitle);
+        }
+      }
     });
 
     new Vue({ el: '#root', data: { headline: 'Learning Objects in The Year 2020' } });
