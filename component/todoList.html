@@ -7,17 +7,16 @@
 <body>
 
   <div id="root">
-
+    <h3>{{ headline }}</h3>
     <ul>
       <todo-item v-for="item in list" :key="item.id" :id="item.id" :title="item.title" :del="item.del"></todo-item>
     </ul>
-
   </div>
 
   <script type="text/javascript">
     Vue.component('todo-item', {
       props: {
-        id: Number,
+        id: Number,  // The component will trigger error when id is not Number type
         title: String,
         del: {
           type: Boolean,
@@ -42,6 +41,7 @@
     let vm = new Vue({
       el: '#root',
       data: {
+        headline: 'Learning Objects in The Year 2020',
         list: [
           { 
             id: 0,
