@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Vue Todo List Component Final Edition</title>
+  <script type="text/javascript" src="../vue.js"></script>
+</head>
+<body>
+
+  <div id="root">
+    <h3>{{ headline }}</h3>
+    <!-- <ul>
+      <todo-item v-for="item in list" :key="item.id" :id="item.id" :title="item.title" :del="item.del"></todo-item>
+    </ul> -->
+
+    <todo-list></todo-list>
+  </div>
+
+  <script type="text/javascript">
+    Vue.component('todo-item', {
+      props: {
+        id: Number,  // The component will trigger error when id is not Number type
+        title: String,
+        del: {
+          type: Boolean,
+          default: false
+        }
+      },
+      template: `
+        <li :data-id="id">
+          <span v-if="!del">{{ title }}</span>
+          <span v-else style="text-decoration:line-through;">{{ title }}</span>
+          <button v-show="!del">Delete</button>
+        </li>
+      `,
+      data: function() {
+        return {
+          
+        };
+      },
+      methods: {
+
+      }
+    });
+
+    Vue.component('todo-list', {
+      data: function() {
+        return {
+          list: [
+            { 
+              id: 0,
+              title: 'Learn Vue.js',
+              del: false
+            },
+            { 
+              id: 1, 
+              title: 'Learn IOS',
+              del: true
+            },
+            { 
+              id: 2,
+              title: 'Learn Java Spring MVC Framework',
+              del: false
+            },
+            {
+              id: 3,
+              title: 'Learn C++',
+              del: false
+            }
+          ]
+        };
+      },
+      template: `
+        <ul>
+          <todo-item
+            v-for="item in list"
+            :key="item.id"
+            :id="item.id"
+            :title="item.title"
+            :del="item.del"
+          ></todo-item>
+        </ul>
+      `,
+    });
+
+    new Vue({ el: '#root', data: { headline: 'Learning Objects in The Year 2020' } });
+  </script>
+</body>
+</html>
