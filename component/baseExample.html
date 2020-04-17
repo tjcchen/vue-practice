@@ -12,6 +12,12 @@
   </div>
 
   <script type="text/javascript">
+    // The disadvantages of global component:
+    // 1. Global definitions force unique names for every component
+    // 2. String templates lack syntax highlighting and require ugly slashes for multiline HTML
+    // 3. No CSS support means that while HTML and JavaScript are modularized into components, CSS is conspicuously left out
+    // 4. No build step restricts us to HTML and ES5 JavaScript, rather than preprocessors like Pug (formerly Jade) and Babel
+
     Vue.component('button-counter', {
       // Use Js closure to expand prototype chain
       // If Vue didn’t use function rule, clicking on one button would affect the data of all other instances
