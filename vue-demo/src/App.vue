@@ -7,6 +7,7 @@
     </todo-list>
 
     <!-- Both of the following approaches can handle two-way binding -->
+    <!-- v-model is just a shorthand of value and input change event -->
     <div class="two-way-binding">
       <p>Message: {{ message }}</p>
       <p>
@@ -62,6 +63,8 @@ export default {
       console.log('deleteHandler', delId, delTitle);
     },
     inputHandler: function(e) {
+      // this.$emit('update:title', callback);
+
       this.message = e.target.value;
     }
   }
