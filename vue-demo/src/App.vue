@@ -5,6 +5,17 @@
       <todo-item v-for="item in list" :key="item.id" :id="item.id" :title="item.title" :del="item.del" @delete="deleteHandler">
       </todo-item>
     </todo-list>
+
+    <!-- Both of the following approaches can handle two-way binding -->
+    <div class="two-way-binding">
+      <p>Message: {{ message }}</p>
+      <p>
+        Approach 1: <input v-model="message">
+      </p>
+      <p>
+        Approach 2: <input :value="message" @input="inputHandler">
+      </p>
+    </div>
   </div>
 </template>
 
@@ -21,6 +32,7 @@ export default {
   data: function() {
     return {
       headline: 'Learning Objects in The Year 2020',
+      message: 'Hello Vue!',
       list: [
         { 
           id: 0,
@@ -48,6 +60,9 @@ export default {
   methods: {
     deleteHandler: function(delId, delTitle) {
       console.log('deleteHandler', delId, delTitle);
+    },
+    inputHandler: function(e) {
+      this.message = e.target.value;
     }
   }
 }
