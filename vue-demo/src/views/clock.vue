@@ -5,12 +5,12 @@
 </template>
 
 <script>
-// import moment from 'moment';
+import moment from 'moment';
 export default {
   data: function() {
     return {
-      now: new Date()
+      now: moment(new Date()).format('YYYY-MM-DD HH:mm:ss')
     };
   }
-};
+}
 </script>
