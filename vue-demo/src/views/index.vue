@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import Clock from './clock.vue';
+import Clock from './Clock.vue';
 export default {
   components: {
     Clock
