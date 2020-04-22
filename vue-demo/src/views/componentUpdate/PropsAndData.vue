@@ -24,12 +24,13 @@ export default {
       b: 'Vue'
     };
   },
+  // this updated hook function only will be triggered when relevant attribute is used in template
   updated: function() {
     console.log('Trigger PropsAndData updated event');
   },
   methods: {
     BChangeHandler: function() {
-      this.b = 'Vue' + Date.now();
+      this.b = 'Vue' + Date.now();  // data.b will trigger updated event, because it is not used in template
       console.log('data.b is changed, but did not trigger component update', this.b);
     }
   }
