@@ -30,12 +30,16 @@ export default {
 }
 </script>
 
-<style lang="less">
+<style scoped lang="less">
 #app {
   font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+
+  .clock-container {
+    color: #f00;
+  }
 }
 </style>

@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="clock-container">
     {{ now }}
   </div>
 </template>
@@ -14,7 +14,3 @@ export default {
   }
 }
 </script>
-
-<style>
-
-</style>
