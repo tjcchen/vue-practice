@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import antd from "ant-design-vue";
 // import App from './App.vue;
-import Index from './views/computedWatcher/Index.vue';
+import Index from './views/hooks/Index.vue';
 import "ant-design-vue/dist/antd.css";
 
 Vue.config.productionTip = false
