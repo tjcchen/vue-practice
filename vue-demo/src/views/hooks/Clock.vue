@@ -54,7 +54,7 @@ export default {
     startClock: function() {
       clearInterval(this.clockInterval);
       if (this.start) {
-        this.clearInterval = setInterval(() => {
+        this.clockInterval = setInterval(() => {
           this.now = moment(new Date()).format('YYYY-MM-DD HH:mm:ss');
         }, 1000);
       }
