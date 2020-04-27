@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Vue Reference</title>
+  <script type="text/javascript" src="../vue.js"></script>
+</head>
+<body>
+  <div id="root">
+    <h2>Vue Reference Retrival</h2>
+
+    <div class="dom-ref-retrieval">
+      <p ref="p">hello</p>
+    </div>
+
+    <div class="component-ref-retrieval">
+      <child-component :title="title" ref="child"></child-component>
+    </div>
+
+    <button @click="clickHandler">Print</button>
+  </div>
+
+  <script type="text/javascript">
+    Vue.component('child-component', {
+      props: {
+        title: String
+      },
+      template: '\
+      <div :title="title">\
+        {{ message }}\
+      </div>\
+      ',
+      data: function() {
+        return {
+          message: 'I am a self-defined component'
+        };
+      }
+    });
+
+    let vm = new Vue({
+      el: '#root',
+      data: {
+        title: 'my-component'
+      },
+      methods: {
+        clickHandler() {
+          // p is the value of ref
+          // In this case, we obtain p element
+          // vm.$refs.p will be the DOM node
+          console.log(vm.$refs.p);
+
+          // vm.$refs.child will be the child component instance
+          console.log(vm.$refs.child);
+        }
+      }
+    });
+  </script>
+</body>
+</html>
