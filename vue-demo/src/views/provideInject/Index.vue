@@ -19,7 +19,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style>
 #app {
   font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -33,9 +33,9 @@ export default {
   margin: 10px 10px 0;
 }
 .border1 {
-  border-color: #ccc;
+  border: 1px solid #ccc;
 }
 .border2 {
-  border-color: #eee;
+  border: 1px solid #eee;
 }
 </style>
