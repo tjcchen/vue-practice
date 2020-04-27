@@ -33,7 +33,8 @@ export default {
 
   provide: function() {
     return {
-      theme: this  // need to pass this to provide
+      // Need to pass this to provide. By doing so, children components can use ChildrenA's attributes and methods
+      theme: this
     }
   },
 
