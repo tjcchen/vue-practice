@@ -1,7 +1,7 @@
 <template>
   <div class="border">
     <h1>A point</h1>
-    <button @click="() => getH3Ref()">Get H3 Reference</button>
+    <button @click="() => getEPointRef()">Get E point Reference</button>
     <ChildrenB />
     <ChildrenC />
     <ChildrenD />
@@ -22,11 +22,19 @@ export default {
   },
   provide: function() {
     return {
-
+      setChildrenRef: (name, ref) => {
+        this[name] = ref;
+      },
+      getChildrenRef: (name) => {
+        return this[name];
+      },
+      getRef: () => {
+        return this;
+      }
     }
   },
   methods: {
-    getH3Ref: function() {
+    getEPointRef: function() {
       console.log(this.childrenE);
     }
   }

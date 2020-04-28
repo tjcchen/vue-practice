@@ -2,7 +2,7 @@
   <div class="childrenD border1">
     <h2>D point</h2>
     <ChildrenG />
-    <ChildrenH />
+    <ChildrenH v-ant-ref="c => setChildrenRef('childrenH', c)" />
     <ChildrenI />
   </div>
 </template>
@@ -18,6 +18,11 @@ export default {
     ChildrenG,
     ChildrenH,
     ChildrenI
+  },
+  inject: {
+    setChildrenRef: {
+      default: () => {}
+    }
   }
 }
 </script>
