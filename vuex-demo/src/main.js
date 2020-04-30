@@ -1,6 +1,8 @@
 import Vue from 'vue'
-import Vuex from 'vuex'
-import App from './App.vue'
+// import Vuex from 'vuex'
+// import App from './App.vue'
+import Vuex from './min-vuex';
+import Root from './Root.vue'
 
 Vue.use(Vuex);
 Vue.config.productionTip = false
@@ -35,7 +37,10 @@ const store = new Vuex.Store({
   }
 });
 
+Vue.prototype.$store = store;  // mount self-defined min-store to Vue prototype
+
 new Vue({
-  store,  // Make store become global variables
-  render: h => h(App),
+  // store,  // Make store become global variables
+  // render: h => h(App),
+  render: h => h(Root)
 }).$mount('#app')
