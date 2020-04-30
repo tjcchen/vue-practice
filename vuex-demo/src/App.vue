@@ -1,28 +1,24 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    {{ count }} : {{ $store.getters.doubleCount }} : {{ message }}
+
+    <button @click="$store.commit('increment')">count++</button>
+    <button @click="$store.dispatch('incrementHandler')">count++</button>
+    <button @click="$store.dispatch('changeMessage', 'world')">change message</button>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
 export default {
   name: 'App',
-  components: {
-    HelloWorld
+  computed: {
+    count: function() {
+      // Retrieve data from vuex store
+      return this.$store.state.count;
+    },
+    message: function() {
+      return this.$store.state.message;
+    }
   }
 }
 </script>
-
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
