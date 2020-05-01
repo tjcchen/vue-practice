@@ -1,8 +1,8 @@
-import Vue from 'vue'
-// import Vuex from 'vuex'
-// import App from './App.vue'
+import Vue from 'vue';
+// import Vuex from 'vuex';
+// import App from './App.vue';
 import Vuex from './min-vuex';
-import Root from './Root.vue'
+import Root from './Root.vue';
 
 Vue.use(Vuex);
 Vue.config.productionTip = false
