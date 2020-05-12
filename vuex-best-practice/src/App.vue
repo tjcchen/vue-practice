@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="PAGE">
     <h1>Shopping Cart Demo</h1>
     <p>Account: {{ email }}</p>
     <hr/>
@@ -26,7 +26,7 @@ export default {
   // }),
   computed: {
     email: function() {
-      return 'xxxxx@gmail.com';
+      return 'chenyangpoppin@gmail.com';
     }
   },
   components: {
@@ -42,8 +42,8 @@ export default {
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+#PAGE {
+  font-family: tahoma,arial,'Hiragino Sans GB','\5b8b\4f53',sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
