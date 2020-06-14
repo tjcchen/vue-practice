@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Vue Global Registration vs Local Registration</title>
+  <script type="text/javascript" src="../vue.js"></script>
+</head>
+<body>
+  <div id="root">
+    <button-counter></button-counter>
+    <test @click="clicknow"></test>
+    {{ msg }}
+  </div>
+
+  <script type="text/javascript">
+  Vue.component('button-counter', {
+    props: ['title'],
+    data: function() {
+      return {
+
+      };
+    },
+    template: 
+    `<div>
+      <h1>h1...</h1>
+    </div>`,
+    methods: {
+
+    }
+  });
+
+  new Vue({
+    el: '#root',
+    data: {
+      msg: 'hello vuejs'
+    },
+    methods: {
+      clicknow: function(e) {
+        console.log(e);
+      }
+    },
+    components: {
+      test: {
+        template: '<div><h2>h2...</h2></div>'
+      }
+    }
+  });
+  </script>
+</body>
+</html>
