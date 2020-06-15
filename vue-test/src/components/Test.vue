@@ -1,6 +1,6 @@
 <template>
   <div class="test">
-    <h2>test... {{msg}}</h2>
+    <h2 @click="tap">test... {{msg}}</h2>
     <p>{{ value }}</p>
   </div>  
 </template>
@@ -17,6 +17,13 @@ export default {
   data: function() {
     return {
       value: 'vuejs'
+    }
+  },
+  methods: {
+    tap: function() {
+      console.log('h2 tap event, inside component');
+      
+      this.$emit('tapOuter', 'passedArgsFromInner');
     }
   }
 }
