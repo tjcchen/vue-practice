@@ -23,7 +23,7 @@ export default {
     tap: function() {
       console.log('h2 tap event, inside component');
       
-      this.$emit('tapOuter', 'passedArgsFromInner');
+      this.$emit('tapOuter', this.value);
     }
   }
 }
