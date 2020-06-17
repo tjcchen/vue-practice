@@ -9,7 +9,7 @@ export default {
   name: 'shoppingCart',
   data: function() {
     return {
-      shoppingCart: 'shoppingCart'
+      shoppingCart: 'This is shopping cart section'
     }
   }
 }
