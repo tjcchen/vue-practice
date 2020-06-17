@@ -6,7 +6,7 @@
     <h2>Products</h2>
     <ProductList/>
     <hr/>
-    <h2>Shopping Cart</h2>
+    <h2>This is shopping cart section</h2>
     <ShoppingCart/>
   </div>
 </template>
