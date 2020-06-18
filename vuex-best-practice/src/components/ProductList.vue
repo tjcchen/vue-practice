@@ -5,7 +5,7 @@
         v-for="product in products"
         :key="product.id"
       >
-        {{ product.title }} - {{ product.price }}
+        {{ product.title }} - {{ product.price }} - {{ product.inventory }}
       </li>
     </ul>
   </div>
