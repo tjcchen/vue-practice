@@ -1,5 +1,5 @@
 import shop from '../../api/shop';
-import {PRODUCTS} from '../mutation-types';
+import { PRODUCTS } from '../mutation-types';
 
 // initial state
 const state = {
@@ -14,6 +14,8 @@ const mutations = {
   },
 
   [PRODUCTS.DECREMENT_PRODUCT_INVENTORY] (state, { id }) {
+    console.log('products mutations: decrement product inventory');
+
     const product = state.all.find(product => product.id === id);
     product.inventory--;
   }
