@@ -7,6 +7,12 @@
         :key="product.id"
       >
         {{ product.title }} - {{ product.price }} - {{ product.inventory }}
+        <button
+          :disabled="!product.inventory"
+          @click="addToCart(product)"
+        >
+          Add To Shopping Cart
+        </button>
       </li>
     </ul>
   </div>
@@ -26,6 +32,14 @@ export default {
     products: state => state.products.all,
     moduleName: state => state.products.moduleName
   }),
+  methods: {
+    addToCart: function(product) {
+      console.log('add to cart: ');
+      console.log(product);
+      
+      this.$store.dispatch('cart/addProductToCart', product);
+    }
+  },
   created: function() {
     this.$store.dispatch('products/getAllProducts');
   }
