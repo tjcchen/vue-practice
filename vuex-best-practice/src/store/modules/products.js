@@ -6,20 +6,6 @@ const state = {
   all: []
 };
 
-// getters
-const getters = {};
-
-// actions
-const actions = {
-  getAllProducts({ commit }) {
-    shop.getProducts(
-      products => {
-        commit(PRODUCTS.SET_PRODUCTS, products);
-      }
-    );
-  }
-};
-
 // mutations
 const mutations = {
   [PRODUCTS.SET_PRODUCTS] (state, products) {
@@ -32,11 +18,28 @@ const mutations = {
   }
 };
 
+// actions
+const actions = {
+  getAllProducts({ commit }) {
+    shop.getProducts(
+      products => {
+        console.log('[shop.getProducts]:');
+        console.log(products);  // products is callback response from shop.getProducts API
+
+        commit(PRODUCTS.SET_PRODUCTS, products);
+      }
+    );
+  }
+};
+
+// getters
+const getters = {};
+
 export default {
   namespaced: true,
   state,
-  getters,
+  mutations,
   actions,
-  mutations
+  getters
 }
 
