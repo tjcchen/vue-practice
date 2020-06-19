@@ -14,7 +14,7 @@ const mutations = {
   },
 
   [PRODUCTS.DECREMENT_PRODUCT_INVENTORY] (state, { id }) {
-    console.log('products mutations: decrement product inventory');
+    console.log('[products mutations]: decrement product inventory');
 
     const product = state.all.find(product => product.id === id);
     product.inventory--;

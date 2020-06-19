@@ -52,6 +52,8 @@ const actions = {
         commit(CART.INCREMENT_ITEM_QUANTITY, cartItem);
       }
 
+      // [IMPORTANT]: the 3rd parameter will help transform commit from local to global scope,
+      // this is always used in manipulate other module's mutation
       // Remove 1 item from stock
       commit(`products/${PRODUCTS.DECREMENT_PRODUCT_INVENTORY}`, { id: product.id }, { root: true });
     }
@@ -60,7 +62,27 @@ const actions = {
 
 // getters
 const getters = {
+  cartProducts: (state, getters, rootState) => {
+    return state.items.map(({ id, quantity }) => {
+      console.log('[cart getters]: ');
+      console.log({id: id, qnty: quantity});
 
+      const product = rootState.products.all.find(product => product.id === id);
+
+      return {
+        title: product.title,
+        price: product.price,
+        quantity
+      };
+    });
+  },
+
+  cartTotalPrice: (state, getters) => {
+    // Investigate array map and reduce
+    return getters.cartProducts.reduce((total, product) => {
+      return total + product.price * product.quantity;
+    }, 0);
+  }
 };
 
 export default {
