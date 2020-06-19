@@ -1,7 +1,9 @@
 <template>
   <div id="app">
     <h1>Shopping Cart Demo</h1>
+    <p>Name: {{ name }} </p>
     <p>Account: {{ email }}</p>
+    <p>Website: {{ website }}</p>
     <hr/>
     <h2>Products</h2>
     <ProductList/>
@@ -12,14 +14,19 @@
 </template>
 
 <script>
+import vuex from 'vuex'
 import {mapState} from 'vuex'
 import ProductList from './components/ProductList.vue'
 import ShoppingCart from './components/ShoppingCart.vue'
 
+console.log(vuex);  // Checkout vuex attributes
+
 export default {
   name: 'App',
   computed: mapState({
-    email: state => state.userInfo.email
+    email: state => state.userInfo.email,
+    name: state => state.userAccount.name,
+    website: state => state.website
   }),
   components: {
     ProductList,

@@ -8,7 +8,11 @@ export default new Vuex.Store({
   state: {
     userInfo: {
       email: 'chenyangpoppin@gmail.com'
-    }
+    },
+    userAccount: {
+      name: 'Andy Chen'
+    },
+    website: 'https://www.taobao.com'
   },
   modules: {
     products
