@@ -12,7 +12,7 @@ const _products = [
 
 export default {
   getProducts: function(cb) {
-    setTimeout(() => cb(_products), 100);
+    setTimeout(() => cb(_products), 0);
   },
 
   buyProducts: function(products, cb, errorCb) {

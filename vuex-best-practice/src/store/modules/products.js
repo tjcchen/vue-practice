@@ -3,7 +3,8 @@ import {PRODUCTS} from '../mutation-types';
 
 // initial state
 const state = {
-  all: []
+  all: [],
+  moduleName: 'products'
 };
 
 // mutations
@@ -20,7 +21,7 @@ const mutations = {
 
 // actions
 const actions = {
-  getAllProducts({ commit }) {
+  getAllProducts: function({ commit }) {
     shop.getProducts(
       products => {
         console.log('[shop.getProducts]:');

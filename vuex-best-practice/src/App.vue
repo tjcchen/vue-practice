@@ -15,7 +15,7 @@
 
 <script>
 import vuex from 'vuex'
-import {mapState} from 'vuex'
+import { mapState } from 'vuex'
 import ProductList from './components/ProductList.vue'
 import ShoppingCart from './components/ShoppingCart.vue'
 

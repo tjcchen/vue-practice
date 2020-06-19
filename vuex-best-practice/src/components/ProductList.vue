@@ -1,5 +1,6 @@
 <template>
   <div class="product-list">
+    <p>moduleName: {{ moduleName }}</p>
     <ul>
       <li
         v-for="product in products"
@@ -22,7 +23,8 @@ export default {
     };
   },
   computed: mapState({
-    products: state => state.products.all
+    products: state => state.products.all,
+    moduleName: state => state.products.moduleName
   }),
   created: function() {
     this.$store.dispatch('products/getAllProducts');
