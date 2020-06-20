@@ -36,7 +36,7 @@
       }
     });
 
-    // Test array map usage
+    // Eg1: Test array map usage
     let arr = [1, 2, 3, 4, 5];
 
     // Map will apply the passed-in function to each element, then return them one by one
@@ -45,6 +45,57 @@
 
     console.log(arr2);
     console.log(arr3);
+
+    // Eg2: Test array reduce usage
+    // arr.reduce(callback[accumulator, currentValue, currentIndex, array], initialValue)
+    // [IMPORTANT]: The accumulator parameter accumulates callback's return values.
+    // [IMPORTANT]: It is the accumulated value previously returned in the last invocation of the callback—or initialValue, if it was supplied.
+    
+    let sum = arr.reduce((x, y) => x + y);
+    let product = arr.reduce((x, y) => x * y);
+
+    console.log('sum: ' + sum);
+    console.log('product: ' + product);
+
+    // Names counter
+    let names = ['Alice', 'Bob', 'Tiffany', 'Bruce', 'Alice', 'Bruce'];
+
+    let nameNum = names.reduce((accum, cur) => {
+      if (cur in accum) {
+        accum[cur]++;
+      } else {
+        accum[cur] = 1;
+      }
+      return accum;
+    }, {});
+
+    console.log(nameNum);  // {Alice: 2, Bob: 1, Tiffany: 1, Bruce: 2}
+
+    // Remove repeatation in array
+    let list1 = [1, 2, 3, 1, 3];
+
+    let newArr = list1.reduce((accum, cur) => {
+      if (!accum.includes(cur)) {
+        return accum.concat(cur);
+      } else {
+        return accum;
+      }
+    }, []);
+
+    console.log(newArr);  // [1, 2, 3]
+
+    // Sum of object' attributes
+    let subjects = [
+      { subject: 'English', score: 80 },
+      { subject: 'Chinese', score: 95 },
+      { subject: 'Math', score: 90 }
+    ];
+
+    let scoreNum = subjects.reduce((accumNum, cur) => {
+      return accumNum + cur.score;
+    }, 0);
+
+    console.log(scoreNum);
   </script>
 </body>
 </html>
