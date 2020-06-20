@@ -24,6 +24,7 @@ export default {
       shoppingCart: 'This is shopping cart section'
     }
   },
+  // Todo: apply mapState and mapGetters to retrieve info( ES6 format )
   computed: {
     products() {
       return this.$store.getters['cart/cartProducts'];
@@ -40,7 +41,8 @@ export default {
       console.log('[shopping cart checkout]: ');
       console.log(products);
 
-      // Todo: add checkout products functionality
+      // Todo: Investigate function createNamespacedHelpers
+      
       this.$store.dispatch('cart/checkout', products);
     }
   }

@@ -1,5 +1,5 @@
 /**
- * Mock Product Data
+ * Mock Client-Server Product Data
  * 
  * @Date 2020-06-16
  */

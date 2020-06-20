@@ -9,11 +9,6 @@ const state = {
   checkoutStatus: null
 };
 
-// PUSH_PRODUCT_TO_CART: 'pushProductToCart',
-// INCREMENT_ITEM_QUANTITY: 'incrementItemQuantity',
-// SET_CART_ITEMS: 'setCartItems',
-// SET_CHECKOUT_STATUS: 'setCheckoutStatus'
-
 // mutations
 const mutations = {
   [CART.PUSH_PRODUCT_TO_CART](state, { id }) {
@@ -82,6 +77,7 @@ const actions = {
       () => {
         commit(CART.SET_CHECKOUT_STATUS, 'failed');
 
+        // Rollback to the cart saved status before sending the request
         commit(CART.SET_CART_ITEMS, { items: savedCartItems });
       }
     );
