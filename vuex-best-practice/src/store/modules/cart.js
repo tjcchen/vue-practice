@@ -70,14 +70,15 @@ const actions = {
 
     commit(CART.SET_CHECKOUT_STATUS, null);
 
-    // empty cart
+    // Empty cart
     commit(CART.SET_CART_ITEMS, { items: [] });
 
     shop.buyProducts(
       products,
 
-      () => commit(CART.SET_CHECKOUT_STATUS, 'successful'),
-
+      () => {
+        commit(CART.SET_CHECKOUT_STATUS, 'successful');
+      },
       () => {
         commit(CART.SET_CHECKOUT_STATUS, 'failed');
 

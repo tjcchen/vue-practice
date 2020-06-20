@@ -34,7 +34,7 @@ export default {
   }),
   methods: {
     addToCart: function(product) {
-      console.log('add to cart: ');
+      console.log('[ProductList method addToCart]: ');
       console.log(product);
       
       this.$store.dispatch('cart/addProductToCart', product);
