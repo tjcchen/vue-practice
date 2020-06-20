@@ -11,7 +11,8 @@
       </li>
     </ul>
     <p>Total: {{ total }}</p>
-    <p><button :disabled="!products.length" @click="checkout(products)">Submit</button></p>
+    <p><button :disabled="!products.length" @click="checkout(products)">Submit Order</button></p>
+    <p v-show="checkoutStatus">Submit {{ checkoutStatus }}</p>
   </div>
 </template>
 
@@ -29,6 +30,9 @@ export default {
     },
     total() {
       return this.$store.getters['cart/cartTotalPrice'];
+    },
+    checkoutStatus() {
+      return this.$store.state.cart.checkoutStatus;
     }
   },
   methods: {
@@ -37,7 +41,7 @@ export default {
       console.log(products);
 
       // Todo: add checkout products functionality
-      // this.$store.dispatch('cart/checkout', products);
+      this.$store.dispatch('cart/checkout', products);
     }
   }
 }

@@ -1,5 +1,6 @@
 // import shop from '../../api/shop';
 import { CART, PRODUCTS } from '../mutation-types';
+import shop from '../../api/shop';
 
 // Initial state
 // shape: [{ id, quantity }]
@@ -58,6 +59,30 @@ const actions = {
       commit(`products/${PRODUCTS.DECREMENT_PRODUCT_INVENTORY}`, { id: product.id }, { root: true });
     }
   },
+
+  checkout({ state, commit }, products) {
+    const savedCartItems = state.items;
+
+    console.log('[cart checkout savedCartItems]:');
+    console.log(savedCartItems);
+
+    commit(CART.SET_CHECKOUT_STATUS, null);
+
+    // empty cart
+    commit(CART.SET_CART_ITEMS, { items: [] });
+
+    shop.buyProducts(
+      products,
+
+      () => commit(CART.SET_CHECKOUT_STATUS, 'successful'),
+
+      () => {
+        commit(CART.SET_CHECKOUT_STATUS, 'failed');
+
+        commit(CART.SET_CART_ITEMS, { items: savedCartItems });
+      }
+    );
+  }
 };
 
 // getters
