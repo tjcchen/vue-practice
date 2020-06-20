@@ -35,6 +35,16 @@
         }
       }
     });
+
+    // Test array map usage
+    let arr = [1, 2, 3, 4, 5];
+
+    // Map will apply the passed-in function to each element, then return them one by one
+    let arr2 = arr.map(x => x * 2);
+    let arr3 = arr.map(Math.sqrt);  // calculate square root
+
+    console.log(arr2);
+    console.log(arr3);
   </script>
 </body>
 </html>

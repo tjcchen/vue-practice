@@ -61,7 +61,9 @@ const actions = {
   },
 
   checkout({ state, commit }, products) {
-    const savedCartItems = state.items;
+    // const savedCartItems = state.items;
+
+    const savedCartItems = [...state.items];
 
     console.log('[cart checkout savedCartItems]:');
     console.log(savedCartItems);
