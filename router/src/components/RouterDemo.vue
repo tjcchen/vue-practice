@@ -6,9 +6,16 @@
     <a href="#/foo">Go To Foo</a>
     <br/>
 
+    <button @click="$router.push('foo')">Go To Foo</button>
+    <br/>
+
     <router-link to="/user/9">Go To /user/9</router-link>
-    <router-link to="/user/9/profile">Go To /user/9/profile</router-link>
+    <router-link to="/user/11/profile">Go To /user/11/profile</router-link>
     <router-link to="/user/12/posts">Go To /user/12/posts</router-link>
+    <br/>
+
+    <p>{{ id }}</p>
+    <p>{{ routerInfo }}</p>
     <br/>
 
     <!-- Sub component will be displaying at this section -->
@@ -20,8 +27,25 @@
 
 <script>
 export default {
-  name: 'RouterDemo'
-}
+  name: 'RouterDemo',
+
+  props: ['id'],
+
+  computed: {
+    routerInfo() {
+      const { fullPath, path, name, params, query, meta } = this.$route;
+
+      return {
+        fullPath,
+        path,
+        name,
+        params,
+        query,
+        meta
+      };
+    }
+  }
+};
 </script>
 
 <style scoped>
