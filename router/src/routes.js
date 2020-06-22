@@ -20,7 +20,7 @@ const routes = [
     path: '/user/:id',
     component: RouterDemo,
     name: '3',
-    props: true,
+    props: true,  // 'true' means pass url userId to pageId, namely {{ id }}
     children: [
       {
         // When the url becomes something like: /user/:id/profile

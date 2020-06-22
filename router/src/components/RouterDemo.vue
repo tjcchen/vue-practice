@@ -14,7 +14,7 @@
     <router-link to="/user/12/posts">Go To /user/12/posts</router-link>
     <br/>
 
-    <p>{{ id }}</p>
+    <p>id: {{ id }}</p>
     <p>{{ routerInfo }}</p>
     <br/>
 
@@ -29,7 +29,7 @@
 export default {
   name: 'RouterDemo',
 
-  props: ['id'],
+  props: ['id'],  // this id is accepted from url
 
   computed: {
     routerInfo() {
