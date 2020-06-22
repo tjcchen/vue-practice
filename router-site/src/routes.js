@@ -26,6 +26,10 @@ const routes = [
     name: 'about'
   },
   {
+    path: '/',
+    redirect: '/Home'
+  },
+  {
     path: '*',
     component: NotFound,
     name: '404'
