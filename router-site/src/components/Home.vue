@@ -17,7 +17,11 @@
 <script>
 export default {
   name: 'Home',
-  props: 'message',
-  
+  props: {
+    message: {
+      type: String,
+      default: 'Hello Vue'
+    }
+  }
 }
 </script>

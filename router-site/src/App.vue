@@ -12,8 +12,6 @@
 <script>
 import Header from './components/Header.vue';
 
-const hello = 'world';
-
 export default {
   name: 'App',
   components: {
