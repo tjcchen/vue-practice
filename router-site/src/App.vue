@@ -1,13 +1,18 @@
 <template>
   <div id="app">
-    <img class="vue-logo" src="./assets/logo.png">
-    <Header></Header>
-    <router-view></router-view>
+    <img
+      class="vue-logo"
+      src="./assets/logo.png"
+    >
+    <Header />
+    <router-view />
   </div>
 </template>
 
 <script>
 import Header from './components/Header.vue';
+
+const hello = 'world';
 
 export default {
   name: 'App',

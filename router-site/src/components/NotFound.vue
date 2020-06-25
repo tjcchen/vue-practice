@@ -1,5 +1,8 @@
 <template>
-  <div id="PAGE" class="page">
+  <div
+    id="PAGE"
+    class="page"
+  >
     <span class="caption">Not Found Page - 404</span>
     <div class="content">
       Ooooops! The page does not found.
