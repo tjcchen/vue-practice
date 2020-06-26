@@ -21,10 +21,7 @@ export default {
 </script>
 
 <style>
-* {
-  margin: 0;
-  padding: 0;
-}
+* { margin: 0; padding: 0; }
 #app {
   font-family: tahoma,arial,'Hiragino Sans GB','\5b8b\4f53',sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -32,7 +29,7 @@ export default {
   text-align: center;
   color: #2c3e50;
 }
-.vue-logo {
+#app .vue-logo {
   width: 60px;
   height: 60px;
 }
@@ -41,10 +38,10 @@ export default {
   margin: 20px auto 0;
   text-align: left;
 }
-.caption {
+#PAGE .caption {
   font-weight: 700;
 }
-.content {
+#PAGE .content {
   margin-top: 10px;
   padding: 10px 0;
   width: 100%;
