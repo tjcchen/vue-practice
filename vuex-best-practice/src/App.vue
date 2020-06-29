@@ -19,8 +19,6 @@ import { mapState } from 'vuex'
 import ProductList from './components/ProductList.vue'
 import ShoppingCart from './components/ShoppingCart.vue'
 
-console.log(vuex);  // Checkout vuex attributes
-
 export default {
   name: 'App',
   computed: mapState({
