@@ -14,10 +14,13 @@
 </template>
 
 <script>
-import vuex from 'vuex'
 import { mapState } from 'vuex'
 import ProductList from './components/ProductList.vue'
 import ShoppingCart from './components/ShoppingCart.vue'
+import vuex from 'vuex'
+
+console.log('[App.vue Entry Point]: Check vuex status');
+console.log(vuex);  // Checkout vuex attributes
 
 export default {
   name: 'App',
