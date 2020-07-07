@@ -1,5 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Counter.vue [UT Counter]: Renders counter component 1`] = `
+<div>
+  <div>Count: 0</div> <button>Count++</button>
+</div>
+`;
+
 exports[`Counter.vue renders counter component 1`] = `
 <div>
   <div>Count: 0</div> <button>Count++</button>

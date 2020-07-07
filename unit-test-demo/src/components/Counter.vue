@@ -16,7 +16,6 @@ export default {
   methods: {
     increseCount: function() {
       this.count++;
-      
       this.$emit('change', this.count);
     }
   }
