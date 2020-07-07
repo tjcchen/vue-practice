@@ -2,7 +2,7 @@
   <div id="app">
     <img alt="Vue logo" src="./assets/logo.png" />
     <HelloWorld msg="Welcome to Your Vue.js App" />
-    <Counter></Counter>
+    <Counter v-on:change="change"></Counter>
   </div>
 </template>
 
@@ -15,6 +15,11 @@ export default {
   components: {
     HelloWorld,
     Counter
+  },
+  methods: {
+    change(args) {
+      console.log(args);
+    }
   }
 };
 </script>
