@@ -1,11 +1,10 @@
 let Vue;
 
-const install = function(_Vue) {
+function install(_Vue) {
   Vue = _Vue;
-
-  const vuexInit = function() {
-    var options = this.$options;
-
+  function vuexInit() {
+    var options = this.$options;  // 'this' refers to Vue instance 
+    // store injection
     if (options.store) {
       this.$store = typeof options.store === 'function'
         ? options.store()
@@ -13,18 +12,16 @@ const install = function(_Vue) {
     } else if (options.parent && options.parent.$store) {
       this.$store = options.parent.$store;
     }
-  };
-
+  }
   Vue.mixin({ beforeCreate: vuexInit });
-};
+}
 
-const Store = function Store(options = {}) {
-  const { state: {}, mutations: {}, getters: {} } = options;
-
-  const computed = {};
-  const store = this;
+function Store(options = {}) {
+  const {state = {}, mutations={}, getters={}} = options
+  const computed = {}
+  const store = this
   store.getters = {};
-
+  
   for (let [key, fn] of Object.entries(getters)) {
     computed[key] = function() {
       return fn(store.state, store.getters);
@@ -33,7 +30,7 @@ const Store = function Store(options = {}) {
     Object.defineProperty(store.getters, key, {
       get: function() {
         return store._vm[key];
-      }
+      },
     });
   }
 
@@ -41,24 +38,23 @@ const Store = function Store(options = {}) {
     data: {
       $$state: state
     },
-    computed
-  });
+    computed,
+  })
+  this._mutations = mutations
+}
 
-  this._mutations = mutations;
-};
-
-Store.prototype.commit = function(type, payload) {
-  if (this._mutations[type]) {
-    this._mutations[type](this.state, payload);
+Store.prototype.commit = function(type, payload){
+  if(this._mutations[type]) {
+    this._mutations[type](this.state, payload)
   }
-};
+}
 
-Object.defineProperties(Store.prototype, {
-  state: {
-    get: function() {
-      return this._vm._data.$$state;
-    }
+Object.defineProperties(Store.prototype, { 
+  state: { 
+    get: function(){
+      return this._vm._data.$$state
+    } 
   }
 });
 
-export default { Store, install };
+export default {Store, install}

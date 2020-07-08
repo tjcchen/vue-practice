@@ -2,6 +2,10 @@
   <div id="root">
     This is a root template, {{ msg }} : {{ count }}
     <button @click="$store.commit('increment')">count++</button>
+
+    <hr/>
+
+    <div>doubleCount: {{ $store.getters.doubleCount }}</div>
   </div>
 </template>
 
