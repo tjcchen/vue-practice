@@ -102,7 +102,7 @@ const getters = {
   },
 
   cartTotalPrice: (state, getters) => {
-    // Investigate array map and reduce
+    // reduce is used for array accumulating purpose
     return getters.cartProducts.reduce((total, product) => {
       return total + product.price * product.quantity;
     }, 0);

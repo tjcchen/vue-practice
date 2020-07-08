@@ -21,7 +21,7 @@ function Store(options = {}) {
   const computed = {}
   const store = this
   store.getters = {};
-  
+
   for (let [key, fn] of Object.entries(getters)) {
     computed[key] = function() {
       return fn(store.state, store.getters);
