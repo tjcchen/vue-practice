@@ -1,6 +1,5 @@
-// import shop from '../../api/shop';
-import { CART, PRODUCTS } from '../mutation-types';
 import shop from '../../api/shop';
+import { CART, PRODUCTS } from '../mutation-types';
 
 // Initial state
 // shape: [{ id, quantity }]
