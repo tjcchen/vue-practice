@@ -29,6 +29,10 @@ const routes = [
     component: () => import(/* webpackChunkName: "layout" */ "../layouts/UserLayout.vue"),
     children: [
       {
+        path: "/user",
+        redirect: "/user/login"
+      },
+      {
         path: "/user/login",
         name: "login",
         component: () => import(/* webpackChunkName: "user" */ "../views/User/Login.vue")
