@@ -1,7 +1,7 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import Home from "../views/Home.vue";
-import RenderRootView from "@/components/RenderRootView.vue";
+// import RenderRootView from "@/components/RenderRootView.vue";
 
 Vue.use(VueRouter);
 
@@ -22,7 +22,11 @@ const routes = [
   {
     path: "/user",
     name: "user",
-    component: RenderRootView,
+    // component: RenderRootView,
+    // component: {
+    //   render: h => h("router-view")  // IMPORTANT: jsx way of replacing RenderRootView
+    // },
+    component: () => import(/* webpackChunkName: "layout" */ "../layouts/UserLayout.vue"),
     children: [
       {
         path: "/user/login",
