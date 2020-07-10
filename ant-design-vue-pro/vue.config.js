@@ -1,3 +1,6 @@
+/**
+ * Webpack configuration
+ */
 module.exports = {
   css: {
     loaderOptions: {
