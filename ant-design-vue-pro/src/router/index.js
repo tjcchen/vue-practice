@@ -2,6 +2,7 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 // import Home from "../views/Home.vue";
 // import RenderRootView from "@/components/RenderRootView.vue";
+import NotFound from "../views/404.vue";
 
 Vue.use(VueRouter);
 
@@ -46,7 +47,7 @@ const routes = [
   },
   {
     path: "/",
-    name: "BasicLayout",
+    // name: "BasicLayout",
     // route level code-splitting
     // this generates a separate chunk (dashboard.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
@@ -60,16 +61,23 @@ const routes = [
         path: "/dashboard",
         name: "dashboard",
         component: { render: h => h("router-view") },
+        redirect: "/dashboard/analysis",
         children: [
           {
             path: "/dashboard/analysis",
             name: "analysis",
-            component: () => import(/* webpackChunkName: "dashboard" */ "../dashboard/Analysis.vue")
+            component: () => import(/* webpackChunkName: "dashboard" */ "../views/Dashboard/Analysis.vue")
           }
         ]
       }
     ]
   },
+  // 404 - Not Found Page
+  {
+    path: "*",
+    name: 404,
+    component: NotFound
+  }
 ];
 
 const router = new VueRouter({
