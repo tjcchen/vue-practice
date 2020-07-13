@@ -1,6 +1,8 @@
 <template>
   <div id="app">
-    <img class="vue-logo" src="./assets/logo.png" />
+    <div class="vue-logo-wrapper">
+      <img class="vue-logo" src="./assets/logo.png" />
+    </div>
     <Header></Header>
     <router-view></router-view>
   </div>
@@ -28,6 +30,11 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+}
+#app .vue-logo-wrapper {
+  width: 1000px;
+  margin: 0 auto;
+  text-align: center;
 }
 #app .vue-logo {
   width: 60px;

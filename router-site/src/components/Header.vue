@@ -19,7 +19,7 @@ export default {
   width: 1000px;
   height: 48px;
   text-align: center;
-  margin: 6px auto 0;
+  margin: 2px auto 0;
 }
 #HEADER .item {
   display: inline-block;
