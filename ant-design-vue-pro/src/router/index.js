@@ -1,8 +1,8 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-// import Home from "../views/Home.vue";
+// import Home from "@/views/Home.vue";
 // import RenderRootView from "@/components/RenderRootView.vue";
-import NotFound from "../views/404.vue";
+import NotFound from "@/views/404.vue";
 
 // NPM NProgress plugin
 import NProgress from "nprogress";

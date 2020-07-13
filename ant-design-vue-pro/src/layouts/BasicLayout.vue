@@ -19,9 +19,8 @@ export default {
     Footer,
     SiderMenu
   }
-}
+};
 </script>
 
 <style>
-
 </style>
