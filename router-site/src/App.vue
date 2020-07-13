@@ -1,8 +1,8 @@
 <template>
   <div id="app">
     <img class="vue-logo" src="./assets/logo.png" />
-    <Header />
-    <router-view />
+    <Header></Header>
+    <router-view></router-view>
   </div>
 </template>
 
