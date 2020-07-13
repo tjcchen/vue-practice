@@ -7,27 +7,30 @@ import NotFound from './components/NotFound.vue';
 const routes = [
   {
     path: '/',
-    component: Home,
-    name: 'root'
+    redirect: '/home'
   },
   {
     path: '/home',
-    component: Home,
+    // component: Home,
+    component: () => import(/* webpackChunkName: "intro" */ './components/Home.vue'),
     name: 'home'
   },
   {
     path: '/blog',
-    component: Blog,
+    // component: Blog,
+    component: () => import(/* webpackChunkName: "intro" */ './components/Blog.vue'),
     name: 'blog'
   },
   {
     path: '/profile',
-    component: Profile,
+    // component: Profile,
+    component: () => import(/* webpackChunkName: "intro" */ './components/Profile.vue'),
     name: 'profile'
   },
   {
     path: '/about',
-    component: About,
+    // component: About,
+    component: () => import(/* webpackChunkName: "intro" */ './components/About.vue'),
     name: 'about'
   },
   {

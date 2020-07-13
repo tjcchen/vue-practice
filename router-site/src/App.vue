@@ -1,9 +1,6 @@
 <template>
   <div id="app">
-    <img
-      class="vue-logo"
-      src="./assets/logo.png"
-    >
+    <img class="vue-logo" src="./assets/logo.png" />
     <Header />
     <router-view />
   </div>
@@ -15,15 +12,18 @@ import Header from './components/Header.vue';
 export default {
   name: 'App',
   components: {
-    Header
-  }
-}
+    Header,
+  },
+};
 </script>
 
 <style>
-* { margin: 0; padding: 0; }
+* {
+  margin: 0;
+  padding: 0;
+}
 #app {
-  font-family: tahoma,arial,'Hiragino Sans GB','\5b8b\4f53',sans-serif;
+  font-family: tahoma, arial, 'Hiragino Sans GB', '\5b8b\4f53', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;

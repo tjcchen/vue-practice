@@ -1,50 +1,17 @@
 <template>
-  <div
-    id="HEADER"
-    class="header"
-  >
-    <router-link
-      class="item"
-      to="/home"
-      data-page="home"
-    >
-      Home
-    </router-link>
-    <router-link
-      class="item"
-      to="/blog"
-      data-page="blog"
-    >
-      Blog
-    </router-link>
-    <router-link
-      class="item"
-      to="/profile"
-      data-page="profile"
-    >
-      Profile
-    </router-link>
-    <router-link
-      class="item"
-      to="/about"
-      data-page="about"
-    >
-      About
-    </router-link>
-    <router-link
-      class="item"
-      to="/miscellaneous"
-      data-page="miscellaneous"
-    >
-      Miscellaneous
-    </router-link>
+  <div id="HEADER" class="header">
+    <router-link class="item" to="/home" data-page="home">Home</router-link>
+    <router-link class="item" to="/blog" data-page="blog">Blog</router-link>
+    <router-link class="item" to="/profile" data-page="profile">Profile</router-link>
+    <router-link class="item" to="/about" data-page="about">About</router-link>
+    <router-link class="item" to="/miscellaneous" data-page="miscellaneous">Miscellaneous</router-link>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'Header'
-}
+  name: 'Header',
+};
 </script>
 
 <style scoped>
