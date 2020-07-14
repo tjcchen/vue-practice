@@ -14,12 +14,14 @@ import store from "./store";
 // import "ant-design-vue/lib/button/style";
 
 // After babel configuration
-import { Button } from "ant-design-vue";
+import { Button, Layout, Icon } from "ant-design-vue";
 
 Vue.config.productionTip = false;
 
 // Vue.use(Antd);
 Vue.use(Button);
+Vue.use(Layout);
+Vue.use(Icon);
 
 new Vue({
   router,

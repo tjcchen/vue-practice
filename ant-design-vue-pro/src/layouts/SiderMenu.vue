@@ -1,10 +1,13 @@
 <template>
-  <div>SiderMenu</div>
+  <div class="sider-menu">SiderMenu</div>
 </template>
 
 <script>
 export default {};
 </script>
 
-<style>
+<style scoped>
+.sider-menu {
+  color: #fff;
+}
 </style>
