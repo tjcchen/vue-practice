@@ -8,6 +8,6 @@ export default {};
 
 <style scoped>
 .sider-menu {
-  color: #fff;
+  color: #1890ff;
 }
 </style>

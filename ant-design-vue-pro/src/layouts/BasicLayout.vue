@@ -1,12 +1,22 @@
 <template>
-  <div>
+  <div :class="[`nav-theme-${navTheme}`, `nav-layout-${navLayout}`]">
     <a-layout id="components-layout-demo" style="min-height:100vh;">
-      <a-layout-sider :trigger="null" collapsible v-model="collapsed">
+      <a-layout-sider
+        v-if="navLayout === 'left'"
+        :trigger="null"
+        :theme="navTheme"
+        collapsible
+        v-model="collapsed"
+      >
         <SiderMenu></SiderMenu>
       </a-layout-sider>
       <a-layout>
         <a-layout-header style="background:#fff; padding:0;">
-          <a-icon class="trigger" :type="collapsed ? 'menu-unfold' : 'menu-fold'" @click="collapsed = !collapsed"></a-icon>
+          <a-icon
+            class="trigger"
+            :type="collapsed ? 'menu-unfold' : 'menu-fold'"
+            @click="collapsed = !collapsed"
+          ></a-icon>
           <Header></Header>
         </a-layout-header>
         <a-layout-content>
@@ -33,6 +43,14 @@ export default {
     return {
       collapsed: false
     };
+  },
+  computed: {
+    navTheme() {
+      return this.$route.query.navTheme || "dark";
+    },
+    navLayout() {
+      return this.$route.query.navLayout || "left";
+    }
   },
   components: {
     Header,

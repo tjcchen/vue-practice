@@ -1,5 +1,5 @@
 <template>
-  <div>Ant Design Pro @2020 Created By Andy Chen</div>
+  <div>Basic Layout @2020 Created By Andy Chen</div>
 </template>
 
 <script>

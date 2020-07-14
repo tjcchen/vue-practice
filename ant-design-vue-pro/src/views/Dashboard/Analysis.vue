@@ -1,10 +1,13 @@
 <template>
-  <div>Analysis</div>
+  <div class="analysis">Analysis</div>
 </template>
 
 <script>
 export default {};
 </script>
 
-<style>
+<style scoped>
+.analysis {
+  padding: 20px 18px;
+}
 </style>
