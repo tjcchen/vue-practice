@@ -17,13 +17,15 @@
         </a-layout-footer>
       </a-layout>
     </a-layout>
+    <SettingDrawer />
   </div>
 </template>
 
 <script>
 import Header from "./Header.vue";
 import Footer from "./Footer.vue";
-import SiderMenu from "./SiderMenu";
+import SiderMenu from "./SiderMenu.vue";
+import SettingDrawer from "@/components/SettingDrawer";
 
 export default {
   name: "BasicLayout",
@@ -35,7 +37,8 @@ export default {
   components: {
     Header,
     Footer,
-    SiderMenu
+    SiderMenu,
+    SettingDrawer
   }
 };
 </script>
