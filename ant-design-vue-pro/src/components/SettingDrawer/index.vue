@@ -6,9 +6,27 @@
           <a-icon :type="visible ? 'close' : 'setting'"></a-icon>
         </div>
       </template>
-      <p>Some contents...</p>
-      <p>Some contents...</p>
-      <p>Some contents...</p>
+      <div>
+        <h3>Theme</h3>
+        <a-radio-group
+          :value="$route.query.navTheme || 'dark'"
+          @change="e => settingHandler('navTheme', e.target.value)"
+        >
+          <a-radio value="dark">Dark</a-radio>
+          <a-radio value="light">Light</a-radio>
+        </a-radio-group>
+
+        <a-divider type="horizontal" />
+
+        <h3>Navigation</h3>
+        <a-radio-group
+          :value="$route.query.navLayout || 'left'"
+          @change="e => settingHandler('navLayout', e.target.value)"
+        >
+          <a-radio value="left">Left</a-radio>
+          <a-radio value="top">Top</a-radio>
+        </a-radio-group>
+      </div>
     </a-drawer>
   </div>
 </template>
@@ -17,12 +35,19 @@
 export default {
   data() {
     return {
-      visible: false
+      visible: false,
+      navTheme: "dark",
+      navLayout: "left"
     };
   },
   methods: {
     onClose() {
       this.visible = false;
+    },
+    settingHandler(type, value) {
+      console.log(this.$route.query); // {navTheme: "light", navLayout: "top"}
+
+      this.$router.push({ query: { ...this.$route.query, [type]: value } });
     }
   }
 };
