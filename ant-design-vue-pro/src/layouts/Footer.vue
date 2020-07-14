@@ -1,5 +1,5 @@
 <template>
-  <div>Basic Layout @2020 Created By Andy Chen</div>
+  <div>Ant Group Basic Layout @2020 Created By Andy Chen</div>
 </template>
 
 <script>
