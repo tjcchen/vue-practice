@@ -91,7 +91,10 @@ const router = new VueRouter({
 });
 
 router.beforeEach((to, from, next) => {
-  NProgress.start();
+  // Do not show page loading effect when url parameter changes
+  if (to.path !== from.path) {
+    NProgress.start();
+  }
   next();
 });
 

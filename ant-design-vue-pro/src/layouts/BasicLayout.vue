@@ -70,4 +70,7 @@ export default {
   cursor: pointer;
   font-size: 18px;
 }
+.nav-theme-dark >>> .sider-menu {
+  color: #fff;
+}
 </style>
