@@ -7,8 +7,9 @@
         :theme="navTheme"
         collapsible
         v-model="collapsed"
+        width="256px"
       >
-        <SiderMenu></SiderMenu>
+        <SiderMenu :theme="navTheme"></SiderMenu>
       </a-layout-sider>
       <a-layout>
         <a-layout-header style="background:#fff; padding:0;">

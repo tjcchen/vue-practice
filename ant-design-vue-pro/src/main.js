@@ -20,7 +20,8 @@ import {
   Icon,
   Drawer,
   Radio,
-  Divider
+  Divider,
+  Menu
 } from "ant-design-vue";
 
 Vue.config.productionTip = false;
@@ -32,6 +33,7 @@ Vue.use(Icon);
 Vue.use(Drawer);
 Vue.use(Radio);
 Vue.use(Divider);
+Vue.use(Menu);
 
 new Vue({
   router,
