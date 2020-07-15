@@ -22,7 +22,7 @@ const routes = [
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ "../views/About.vue")
+    component: () => import( /* webpackChunkName: "about" */ "../views/About.vue")
   },
   {
     path: "/user",
@@ -31,21 +31,20 @@ const routes = [
     // component: {
     //   render: h => h("router-view")  // IMPORTANT: jsx way of replacing RenderRootView
     // },
-    component: () => import(/* webpackChunkName: "layout" */ "../layouts/UserLayout.vue"),
-    children: [
-      {
+    component: () => import( /* webpackChunkName: "layout" */ "../layouts/UserLayout.vue"),
+    children: [{
         path: "/user",
         redirect: "/user/login"
       },
       {
         path: "/user/login",
         name: "login",
-        component: () => import(/* webpackChunkName: "user" */ "../views/User/Login.vue")
+        component: () => import( /* webpackChunkName: "user" */ "../views/User/Login.vue")
       },
       {
         path: "/user/register",
         name: "register",
-        component: () => import(/* webpackChunkName: "user" */ "../views/User/Register.vue")
+        component: () => import( /* webpackChunkName: "user" */ "../views/User/Register.vue")
       }
     ]
   },
@@ -55,24 +54,23 @@ const routes = [
     // route level code-splitting
     // this generates a separate chunk (dashboard.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "dashboard" */ "../layouts/BasicLayout.vue"),
-    children: [
-      {
+    component: () => import( /* webpackChunkName: "dashboard" */ "../layouts/BasicLayout.vue"),
+    children: [{
         path: "/",
         redirect: "/dashboard/analysis"
       },
       {
         path: "/dashboard",
         name: "dashboard",
-        component: { render: h => h("router-view") },
+        component: {
+          render: h => h("router-view")
+        },
         redirect: "/dashboard/analysis",
-        children: [
-          {
-            path: "/dashboard/analysis",
-            name: "analysis",
-            component: () => import(/* webpackChunkName: "dashboard" */ "../views/Dashboard/Analysis.vue")
-          }
-        ]
+        children: [{
+          path: "/dashboard/analysis",
+          name: "analysis",
+          component: () => import( /* webpackChunkName: "dashboard" */ "../views/Dashboard/Analysis.vue"),
+        }]
       }
     ]
   },
