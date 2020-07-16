@@ -28,7 +28,7 @@ export default {
   props: {
     theme: {
       type: String,
-      default: 'dark'
+      default: "dark"
     }
   },
   data() {
@@ -45,7 +45,7 @@ export default {
           children: [
             {
               key: "2.1",
-              title: "Navigation 3",
+              title: "Navigation 2.1",
               children: [{ key: "2.1.1", title: "Option 2.1.1" }]
             }
           ]
