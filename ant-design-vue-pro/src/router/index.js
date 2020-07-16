@@ -74,6 +74,44 @@ const routes = [
       }
     ]
   },
+  {
+    path: "/form",
+    name: "form",
+    component: {
+      render: h => h("router-view")
+    },
+    children: [{
+        path: "/form/basic-form",
+        name: "basicform",
+        component: () => import( /* webpackChunkName: "form" */ "../views/Forms/BasicForm.vue")
+      },
+      {
+        path: "/form/step-form",
+        name: "stepform",
+        component: () => import( /* webpackChunkName: "form" */ "../views/Forms/StepForm.vue"),
+        children: [{
+            path: "/form/step-form",
+            redirect: "/form/step-form/info"
+          },
+          {
+            path: "/form/step-form/info",
+            name: "info",
+            component: import( /* webpackChunkName: "form" */ "../views/Forms/StepForm/Info.vue"),
+          },
+          {
+            path: "/form/step-form/confirm",
+            name: "confirm",
+            component: import( /* webpackChunkName: "form" */ "../views/Forms/StepForm/Confirm.vue"),
+          },
+          {
+            path: "/form/step-form/result",
+            name: "result",
+            component: () => import( /* webpackChunkName: "form" */ "../views/Forms/StepForm/Result.vue"),
+          }
+        ]
+      }
+    ]
+  },
   // 404 - Not Found Page
   {
     path: "*",
