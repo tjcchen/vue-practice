@@ -1,5 +1,7 @@
 <template>
-  <div>StepForm</div>
+  <div>
+    <div>StepForm</div>
+  </div>
 </template>
 
 <script>

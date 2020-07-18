@@ -19,6 +19,7 @@ const routes = [
   {
     path: "/about",
     name: "About",
+    hideInMenu: true,
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
@@ -27,6 +28,7 @@ const routes = [
   {
     path: "/user",
     name: "user",
+    hideInMenu: true,
     // component: RenderRootView,
     // component: {
     //   render: h => h("router-view")  // IMPORTANT: jsx way of replacing RenderRootView
@@ -50,72 +52,96 @@ const routes = [
   },
   {
     path: "/",
-    // name: "BasicLayout",
     // route level code-splitting
-    // this generates a separate chunk (dashboard.[hash].js) for this route
+    // this generates a separate chunk (layout.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    component: () => import( /* webpackChunkName: "dashboard" */ "../layouts/BasicLayout.vue"),
+    component: () => import( /* webpackChunkName: "layout" */ "../layouts/BasicLayout.vue"),
     children: [{
         path: "/",
         redirect: "/dashboard/analysis"
       },
+
+      // Dashboard Section
       {
         path: "/dashboard",
         name: "dashboard",
+        meta: {
+          icon: "dashboard",
+          title: "dashboard"
+        },
         component: {
           render: h => h("router-view")
         },
-        redirect: "/dashboard/analysis",
+        // redirect: "/dashboard/analysis",
         children: [{
           path: "/dashboard/analysis",
           name: "analysis",
+          meta: {
+            title: "analysis"
+          },
           component: () => import( /* webpackChunkName: "dashboard" */ "../views/Dashboard/Analysis.vue"),
         }]
-      }
-    ]
-  },
-  {
-    path: "/form",
-    name: "form",
-    component: {
-      render: h => h("router-view")
-    },
-    children: [{
-        path: "/form/basic-form",
-        name: "basicform",
-        component: () => import( /* webpackChunkName: "form" */ "../views/Forms/BasicForm.vue")
       },
+
+      // Form Section
       {
-        path: "/form/step-form",
-        name: "stepform",
-        component: () => import( /* webpackChunkName: "form" */ "../views/Forms/StepForm.vue"),
-        children: [{
+        path: "/form",
+        name: "form",
+        meta: {
+          icon: "form",
+          title: "form"
+        },
+        component: {
+          render: h => h("router-view")
+        },
+        children: [
+          {
+            path: "/form/basic-form",
+            name: "basicform",
+            meta: {
+              title: "basicform"
+            },
+            component: () => import( /* webpackChunkName: "form" */ "../views/Forms/BasicForm.vue")
+          },
+          {
             path: "/form/step-form",
-            redirect: "/form/step-form/info"
-          },
-          {
-            path: "/form/step-form/info",
-            name: "info",
-            component: import( /* webpackChunkName: "form" */ "../views/Forms/StepForm/Info.vue"),
-          },
-          {
-            path: "/form/step-form/confirm",
-            name: "confirm",
-            component: import( /* webpackChunkName: "form" */ "../views/Forms/StepForm/Confirm.vue"),
-          },
-          {
-            path: "/form/step-form/result",
-            name: "result",
-            component: () => import( /* webpackChunkName: "form" */ "../views/Forms/StepForm/Result.vue"),
+            name: "stepform",
+            meta: {
+              title: "stepform"
+            },
+            hideChildrenInMenu: true,
+            component: () => import( /* webpackChunkName: "form" */ "../views/Forms/StepForm.vue"),
+            children: [
+              {
+                path: "/form/step-form",
+                redirect: "/form/step-form/info"
+              },
+              {
+                path: "/form/step-form/info",
+                name: "info",
+                component: import( /* webpackChunkName: "form" */ "../views/Forms/StepForm/Info.vue"),
+              },
+              {
+                path: "/form/step-form/confirm",
+                name: "confirm",
+                component: import( /* webpackChunkName: "form" */ "../views/Forms/StepForm/Confirm.vue"),
+              },
+              {
+                path: "/form/step-form/result",
+                name: "result",
+                component: () => import( /* webpackChunkName: "form" */ "../views/Forms/StepForm/Result.vue"),
+              }
+            ]
           }
         ]
-      }
+      },
     ]
   },
   // 404 - Not Found Page
   {
     path: "*",
     name: 404,
+    hideInMenu: true,
     component: NotFound
   }
 ];
