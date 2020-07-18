@@ -67,7 +67,7 @@ const routes = [
         name: "dashboard",
         meta: {
           icon: "dashboard",
-          title: "dashboard"
+          title: "Dashboard"
         },
         component: {
           render: h => h("router-view")
@@ -77,7 +77,7 @@ const routes = [
           path: "/dashboard/analysis",
           name: "analysis",
           meta: {
-            title: "analysis"
+            title: "Analysis"
           },
           component: () => import( /* webpackChunkName: "dashboard" */ "../views/Dashboard/Analysis.vue"),
         }]
@@ -89,7 +89,7 @@ const routes = [
         name: "form",
         meta: {
           icon: "form",
-          title: "form"
+          title: "Form"
         },
         component: {
           render: h => h("router-view")
@@ -99,7 +99,7 @@ const routes = [
             path: "/form/basic-form",
             name: "basicform",
             meta: {
-              title: "basicform"
+              title: "BasicForm"
             },
             component: () => import( /* webpackChunkName: "form" */ "../views/Forms/BasicForm.vue")
           },
@@ -107,7 +107,7 @@ const routes = [
             path: "/form/step-form",
             name: "stepform",
             meta: {
-              title: "stepform"
+              title: "StepForm"
             },
             hideChildrenInMenu: true,
             component: () => import( /* webpackChunkName: "form" */ "../views/Forms/StepForm.vue"),
