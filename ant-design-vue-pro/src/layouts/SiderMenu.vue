@@ -40,6 +40,8 @@ export default {
     this.openKeysMap = {};
     const menuData = this.getMenuData(this.$router.options.routes);
 
+    // this.$route.path refers to current url path, Eg: /dashboard/analysis
+
     return {
       collapsed: false,
       menuData,
@@ -54,13 +56,23 @@ export default {
     }
   },
   methods: {
-    toggleCollapsed() {
-      this.collapsed = !this.collapsed;
-    },
+    // toggleCollapsed() {
+    //   this.collapsed = !this.collapsed;
+    // },
     getMenuData(routes = [], parentKeys = [], selectedKey) {
       const menuData = [];
 
+      console.log('routes: ');
+      console.log(routes);
+      console.log('\r\n');
+
       routes.forEach(item => {
+        // console.log('openKeysMap: ');
+        // console.log(this.openKeysMap);
+        // console.log('selectedKeysMap: ');
+        // console.log(this.selectedKeysMap);
+        // console.log('\r\n');
+
         if (item.name && !item.hideInMenu) {
           this.openKeysMap[item.path] = parentKeys; // Todo: comprehend this part
           this.selectedKeysMap[item.path] = [selectedKey || item.path];
