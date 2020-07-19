@@ -10,6 +10,7 @@
   "dependencies": {
     "ant-design-vue": "^1.5.3",
     "core-js": "^3.6.4",
+    "lodash": "^4.17.19",
     "moment": "^2.24.0",
     "vue": "^2.6.11"
   },
