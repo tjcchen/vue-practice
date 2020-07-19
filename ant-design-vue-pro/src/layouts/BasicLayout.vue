@@ -20,7 +20,7 @@
           ></a-icon>
           <Header></Header>
         </a-layout-header>
-        <a-layout-content>
+        <a-layout-content style="padding:20px 18px;">
           <router-view></router-view>
         </a-layout-content>
         <a-layout-footer style="text-align:center;">
@@ -71,6 +71,7 @@ export default {
   cursor: pointer;
   font-size: 18px;
 }
+
 .nav-theme-dark >>> .sider-menu {
   color: #fff;
 }

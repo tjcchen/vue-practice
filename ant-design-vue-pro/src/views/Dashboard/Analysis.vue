@@ -6,8 +6,4 @@
 export default {};
 </script>
 
-<style scoped>
-.analysis {
-  padding: 20px 18px;
-}
-</style>
+<style scoped></style>

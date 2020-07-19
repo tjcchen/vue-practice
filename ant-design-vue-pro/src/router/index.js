@@ -94,8 +94,7 @@ const routes = [
         component: {
           render: h => h("router-view")
         },
-        children: [
-          {
+        children: [{
             path: "/form/basic-form",
             name: "basicform",
             meta: {
@@ -111,8 +110,7 @@ const routes = [
             },
             hideChildrenInMenu: true,
             component: () => import( /* webpackChunkName: "form" */ "../views/Forms/StepForm.vue"),
-            children: [
-              {
+            children: [{
                 path: "/form/step-form",
                 redirect: "/form/step-form/info"
               },
