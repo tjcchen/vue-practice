@@ -1,12 +1,19 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
+import findLast from "lodash/findLast";
+
 // import Home from "@/views/Home.vue";
 // import RenderRootView from "@/components/RenderRootView.vue";
-import NotFound from "@/views/404.vue";
+import Forbidden from "@/views/403";
+import NotFound from "@/views/404";
 
 // NPM NProgress plugin
 import NProgress from "nprogress";
 import "nprogress/nprogress.css";
+import {
+  isLogin,
+  check
+} from "../utils/auth";
 
 Vue.use(VueRouter);
 
@@ -52,6 +59,9 @@ const routes = [
   },
   {
     path: "/",
+    meta: {
+      authority: ["user", "admin"]
+    },
     // route level code-splitting
     // this generates a separate chunk (layout.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
@@ -89,7 +99,8 @@ const routes = [
         name: "form",
         meta: {
           icon: "form",
-          title: "Form"
+          title: "Form",
+          authority: ["admin"]
         },
         component: {
           render: h => h("router-view")
@@ -135,6 +146,13 @@ const routes = [
       },
     ]
   },
+  // 403 - Forbidden
+  {
+    path: "*",
+    name: 403,
+    hideInMenu: true,
+    component: Forbidden
+  },
   // 404 - Not Found Page
   {
     path: "*",
@@ -155,6 +173,24 @@ router.beforeEach((to, from, next) => {
   if (to.path !== from.path) {
     NProgress.start();
   }
+
+  // Todo: check npm lodash usage
+  const record = findLast(to.matched, record => record.meta.authority);
+
+  if (record && !check(record.meta.authority)) {
+    if (!isLogin() && to.path !== "/user/login") {
+      next({
+        path: "/user/login"
+      });
+    } else if (to.path !== "/403") {
+      next({
+        path: "/403"
+      });
+    }
+
+    NProgress.done();
+  }
+
   next();
 });
 
