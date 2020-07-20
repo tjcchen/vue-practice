@@ -24,6 +24,7 @@
 
 <script>
 import SubMenu from "./SubMenu.vue";
+// import { check } from "@/utils/auth";
 
 export default {
   components: {
@@ -62,16 +63,21 @@ export default {
     getMenuData(routes = [], parentKeys = [], selectedKey) {
       const menuData = [];
 
-      console.log('routes: ');
+      console.log("routes: ");
       console.log(routes);
-      console.log('\r\n');
+      console.log("\r\n");
 
-      routes.forEach(item => {
+      for (let item of routes) {
         // console.log('openKeysMap: ');
         // console.log(this.openKeysMap);
         // console.log('selectedKeysMap: ');
         // console.log(this.selectedKeysMap);
         // console.log('\r\n');
+
+        // Does not display relevant menu items when users do not have permission
+        // if (item.meta && item.meta.authority && !check(item.meta.authority)) {
+        //   break;
+        // }
 
         if (item.name && !item.hideInMenu) {
           this.openKeysMap[item.path] = parentKeys; // Todo: comprehend this part
@@ -103,14 +109,14 @@ export default {
             ...this.getMenuData(item.children, [...parentKeys, item.path])
           );
         }
-      });
+      }
 
       return menuData;
     }
   },
-  created() {
-    // this.getMenuData();
-  }
+  // created() {
+  //   this.getMenuData();
+  // }
 };
 </script>
 
