@@ -24,7 +24,7 @@
 
 <script>
 import SubMenu from "./SubMenu.vue";
-// import { check } from "@/utils/auth";
+import { check } from "@/utils/auth";
 
 export default {
   components: {
@@ -57,9 +57,6 @@ export default {
     }
   },
   methods: {
-    // toggleCollapsed() {
-    //   this.collapsed = !this.collapsed;
-    // },
     getMenuData(routes = [], parentKeys = [], selectedKey) {
       const menuData = [];
 
@@ -75,9 +72,9 @@ export default {
         // console.log('\r\n');
 
         // Does not display relevant menu items when users do not have permission
-        // if (item.meta && item.meta.authority && !check(item.meta.authority)) {
-        //   break;
-        // }
+        if (item.meta && item.meta.authority && !check(item.meta.authority)) {
+          break;
+        }
 
         if (item.name && !item.hideInMenu) {
           this.openKeysMap[item.path] = parentKeys; // Todo: comprehend this part
@@ -113,10 +110,7 @@ export default {
 
       return menuData;
     }
-  },
-  // created() {
-  //   this.getMenuData();
-  // }
+  }
 };
 </script>
 
