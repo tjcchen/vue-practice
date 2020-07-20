@@ -28,7 +28,10 @@
         </a-layout-footer>
       </a-layout>
     </a-layout>
-    <SettingDrawer />
+
+    <Authorized :authority="['user']">
+      <SettingDrawer />
+    </Authorized>
   </div>
 </template>
 

@@ -2,6 +2,7 @@ import Vue from "vue";
 import App from "./App.vue";
 import router from "./router";
 import store from "./store";
+import Authorized from "./components/Authorized";
 
 // Import ant-design-vue and its corresponding css, this works fine if you are using css
 // import Antd from "ant-design-vue";
@@ -34,6 +35,7 @@ Vue.use(Drawer);
 Vue.use(Radio);
 Vue.use(Divider);
 Vue.use(Menu);
+Vue.component('Authorized', Authorized);
 
 new Vue({
   router,
