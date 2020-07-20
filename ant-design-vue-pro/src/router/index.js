@@ -10,10 +10,8 @@ import NotFound from "@/views/404";
 // NPM NProgress plugin
 import NProgress from "nprogress";
 import "nprogress/nprogress.css";
-import {
-  isLogin,
-  check
-} from "../utils/auth";
+import { isLogin, check } from "../utils/auth";
+import { notification } from "ant-design-vue";
 
 Vue.use(VueRouter);
 
@@ -183,11 +181,17 @@ router.beforeEach((to, from, next) => {
         path: "/user/login"
       });
     } else if (to.path !== "/403") {
+      // Add error notification component to notify users
+      notification.error({
+        message: "403",
+        description: "You do not have permission to access, please contact user admin! Thank you."
+      });
+
       next({
         path: "/403"
       });
     }
-
+    
     NProgress.done();
   }
 
