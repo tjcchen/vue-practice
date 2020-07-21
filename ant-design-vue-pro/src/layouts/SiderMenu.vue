@@ -1,5 +1,6 @@
 <template>
   <div style="width: 256px">
+    <!-- Todo: investigate this part of code when available -->
     <!-- :openKeys.sync="openKeys" two way binding -->
     <a-menu
       :selectedKeys="selectedKeys"

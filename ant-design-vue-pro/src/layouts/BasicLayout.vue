@@ -29,7 +29,7 @@
       </a-layout>
     </a-layout>
 
-    <Authorized :authority="['user']">
+    <Authorized :authority="['admin']">
       <SettingDrawer />
     </Authorized>
   </div>

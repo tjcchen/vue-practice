@@ -35,7 +35,9 @@ Vue.use(Drawer);
 Vue.use(Radio);
 Vue.use(Divider);
 Vue.use(Menu);
-Vue.component('Authorized', Authorized);
+
+// Register Authorized component to global scope so that you can utilize it on every other components
+Vue.component('Authorized', Authorized);  
 
 new Vue({
   router,
