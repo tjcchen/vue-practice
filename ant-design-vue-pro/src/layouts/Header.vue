@@ -9,5 +9,6 @@ export default {};
 <style scoped>
 .header {
   display: inline;
+  margin-left: 18px;
 }
 </style>

@@ -10,9 +10,6 @@ export default {
     }
   },
   render(h, context) {
-    console.log('checkout context: ');
-    console.log(context);
-
     const { props, scopedSlots } = context;
     return check(props.authority) ? scopedSlots.default() : null;
   }

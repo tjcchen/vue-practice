@@ -13,11 +13,16 @@
       </a-layout-sider>
       <a-layout>
         <a-layout-header style="background:#fff; padding:0;">
+
+          <!-- Note: there is a self-defined v-auth directive here -->
+          <!-- Note: the v-auth directive can only be loaded once -->
           <a-icon
+            v-auth="['admin']"
             class="trigger"
             :type="collapsed ? 'menu-unfold' : 'menu-fold'"
             @click="collapsed = !collapsed"
           ></a-icon>
+
           <Header></Header>
         </a-layout-header>
         <a-layout-content style="padding:20px 18px;">
@@ -70,7 +75,7 @@ export default {
   height: 64px;
   line-height: 64px;
   vertical-align: bottom;
-  padding: 0 18px;
+  padding: 0 0 0 18px;
   cursor: pointer;
   font-size: 18px;
 }

@@ -3,6 +3,7 @@ import App from "./App.vue";
 import router from "./router";
 import store from "./store";
 import Authorized from "./components/Authorized";
+import Auth from "./directives/auth";
 
 // Import ant-design-vue and its corresponding css, this works fine if you are using css
 // import Antd from "ant-design-vue";
@@ -35,6 +36,9 @@ Vue.use(Drawer);
 Vue.use(Radio);
 Vue.use(Divider);
 Vue.use(Menu);
+
+// Register v-auth directive to global context
+Vue.use(Auth);
 
 // Register Authorized component to global scope so that you can utilize it on every other components
 Vue.component('Authorized', Authorized);  
