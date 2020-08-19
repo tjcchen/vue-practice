@@ -1,39 +1,63 @@
 <template>
-  <div ref="chartDom" style="height: 400px;"></div>
+  <div ref="chartDom"></div>
 </template>
 
 <script>
 import echarts from "echarts";
-import { addListener } from "resize-detector";
+import debounce from "lodash/debounce";
+import { addListener, removeListener } from "resize-detector";
 
 export default {
+  props: {
+    option: {
+      type: Object,
+      default: () => {}
+    }
+  },
+  watch: {
+    // When an option attribute changes, it will not trigger this function
+    // There a deep monitoring is needed
+    option(val) {
+      this.chart.setOption(val);
+    },
+
+    // Deep option monitoring
+    // option: {
+    //   handler(val) {
+    //     this.chart.setOption(val);
+    //   },
+    //   deep: true
+    // }
+  },
+  created () {
+    // Avoid constantly resizing
+    this.resize = debounce(this.resize, 300);
+  },
   mounted () {
-    // Initialize echarts DOM instance
-    this.chart = echarts.init(this.$refs.chartDom);
+    // Render chart to the page
+    this.renderChart();
 
     // Monitor chartDom resize event
     addListener(this.$refs.chartDom, this.resize);
+  },
+  beforeDestroy () {
+    // Remove chartDom event and eliminate object
+    removeListener(this.$refs.chartDom, this.resize);
 
-    // Set chart options
-    this.chart.setOption({
-      title: {
-          text: 'ECharts Demo'
-      },
-      tooltip: {},
-      xAxis: {
-          data: ['Category 1', 'Category 2', 'Category 3', 'Category 4', 'Category 5', 'Category 6']
-      },
-      yAxis: {},
-      series: [{
-          name: 'Volume',
-          type: 'bar',
-          data: [5, 20, 36, 10, 10, 20]
-      }]
-    });
+    this.chart.dispose();
+    this.chart = null;
   },
   methods: {
     resize() {
+      console.log('resize');
       this.chart.resize();
+    },
+    renderChart() {
+      // Initialize echarts DOM instance
+      this.chart = echarts.init(this.$refs.chartDom);
+
+      // Set chart options from component arguments
+      this.chart.setOption(this.option);
     }
   }
 }

@@ -12,7 +12,7 @@
     "ant-design-vue": "^1.6.3",
     "core-js": "^3.6.5",
     "echarts": "^4.8.0",
-    "lodash": "^4.17.19",
+    "lodash": "^4.17.20",
     "moment": "^2.27.0",
     "nprogress": "^0.2.0",
     "resize-detector": "^0.2.2",
