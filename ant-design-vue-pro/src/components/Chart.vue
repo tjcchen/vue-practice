@@ -21,11 +21,11 @@ export default {
       },
       tooltip: {},
       xAxis: {
-          data: ['衬衫', '羊毛衫', '雪纺衫', '裤子', '高跟鞋', '袜子']
+          data: ['Category 1', 'Category 2', 'Category 3', 'Category 4', 'Category 5', 'Category 6']
       },
       yAxis: {},
       series: [{
-          name: 'Volumn',
+          name: 'Volume',
           type: 'bar',
           data: [5, 20, 36, 10, 10, 20]
       }]
