@@ -4,7 +4,7 @@ import findLast from "lodash/findLast";
 
 // import Home from "@/views/Home.vue";
 // import RenderRootView from "@/components/RenderRootView.vue";
-import Forbidden from "@/views/403";
+// import Forbidden from "@/views/403";
 import NotFound from "@/views/404";
 
 // NPM NProgress plugin
@@ -145,12 +145,12 @@ const routes = [
     ]
   },
   // 403 - Forbidden
-  {
-    path: "*",
-    name: 403,
-    hideInMenu: true,
-    component: Forbidden
-  },
+  // {
+  //   path: "*",
+  //   name: 403,
+  //   hideInMenu: true,
+  //   component: Forbidden
+  // },
   // 404 - Not Found Page
   {
     path: "*",

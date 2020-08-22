@@ -41,7 +41,14 @@ Vue.use(Menu);
 Vue.use(Auth);
 
 // Register Authorized component to global scope so that you can utilize it on every other components
-Vue.component('Authorized', Authorized);  
+Vue.component('Authorized', Authorized);
+
+// Register iconfont to global context
+const IconFont = Icon.createFromIconfontCN({
+  scriptUrl: '//at.alicdn.com/t/font_2022059_j0j15j3uemp.js', // generate from iconfont.cn
+});
+
+Vue.component('IconFont', IconFont);
 
 new Vue({
   router,
