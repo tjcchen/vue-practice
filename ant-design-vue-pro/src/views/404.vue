@@ -17,6 +17,9 @@
 import NotFoundImage from "@/assets/NotFound.svg";
 import Google from "@/assets/google.svg";
 
+// Use the following line of command to generate current application configuration
+// vue inspect > output.js
+
 export default {
   data() {
     return {
