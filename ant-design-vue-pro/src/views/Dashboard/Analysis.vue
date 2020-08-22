@@ -6,7 +6,8 @@
 
 <script>
 // import random from "lodash/random";
-import axios from "axios";
+// import axios from "axios";
+import request from "@/utils/request";
 import Chart from "@/components/Chart";
 
 export default {
@@ -17,7 +18,11 @@ export default {
   },
   methods: {
     getChartData() {
-      axios.get("/api/dashboard/chart", { params: { ID: 12345 } }).then(response => {
+      request({
+        url: "/api/dashboard/chart",
+        params: { ID: 12345 },
+        method: "GET"
+      }).then(response => {
         this.chartOption = {
           title: {
               text: 'ECharts Demo'
@@ -31,10 +36,28 @@ export default {
               name: 'Volume',
               type: 'bar',
               data: response.data
-              // data: [5, 20, 36, 10, 10, 20]
           }]
         };
       });
+
+      // axios.get("/api/dashboard/chart", { params: { ID: 12345 } }).then(response => {
+      //   this.chartOption = {
+      //     title: {
+      //         text: 'ECharts Demo'
+      //     },
+      //     tooltip: {},
+      //     xAxis: {
+      //         data: ['Category 1', 'Category 2', 'Category 3', 'Category 4', 'Category 5', 'Category 6']
+      //     },
+      //     yAxis: {},
+      //     series: [{
+      //         name: 'Volume',
+      //         type: 'bar',
+      //         data: response.data
+      //         // data: [5, 20, 36, 10, 10, 20]
+      //     }]
+      //   };
+      // });
     }
   },
   mounted() {

@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
-    "serve:no-mock": "cross-env MOCK=none vue-cli-service serve",
+    "[note: this is a line of comment for the following line]": "Add new npm run serve:no-mock command to bypass mock environment",
+    "serve:no-mock": "cross-env MOCK=none vue-cli-service serve",  
     "build": "vue-cli-service build",
     "test:unit": "vue-cli-service test:unit",
     "lint": "vue-cli-service lint"
