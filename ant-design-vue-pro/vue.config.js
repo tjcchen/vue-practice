@@ -22,7 +22,7 @@ module.exports = {
             console.log('Skipping proxy for browser request 222.');
 
             return '/index.html';
-          } else {
+          } else if (process.env.MOCK !== 'none') {  // apply this part of logic when environment is mock
             const name   = req.path.split("/api/")[1].split("/").join("_");
             const mock   = require(`./mock/${name}`);
             const result = mock(req.method);
