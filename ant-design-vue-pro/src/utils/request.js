@@ -8,7 +8,14 @@ function request(options) {
     const { response: { status, statusText } } = error;
 
     notification.error({
-      message: status,
+      // Customized error notification with html tags, namely Vuejs jsx supportive
+      // Repository: https://github.com/vuejs/jsx
+      // eslint-disable-next-line no-unused-vars
+      message: h => (
+        <div>
+          Request Error <span style="color:red;">{ status }</span> : { options.url }
+        </div>
+      ),
       description: statusText
     });
 
