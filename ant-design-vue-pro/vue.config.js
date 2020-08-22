@@ -14,13 +14,17 @@ module.exports = {
     proxy: {
       '/api': {
         target: 'http://localhost:8080',
+        // Bypass proxy - developers can add code logic to this part of code
+        // 1. For browser request, like xxx.html file, we return index.html
+        // 2. For API request, like /api/dashboard/chart, we utilize code logic to handle it
         bypass: function(req, res) {
           if (req.headers.accept.indexOf('html') !== -1) {
-            console.log('Skipping proxy for browser request.');
+            console.log('Skipping proxy for browser request 222.');
+
             return '/index.html';
           } else {
-            const name = req.path.split("/api/")[1].split("/").join("_");
-            const mock = require(`./mock/${name}`);
+            const name   = req.path.split("/api/")[1].split("/").join("_");
+            const mock   = require(`./mock/${name}`);
             const result = mock(req.method);
 
             // clear mock api cache, this must be done

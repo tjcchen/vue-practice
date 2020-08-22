@@ -1,3 +1,9 @@
+/**
+ * Mock API Data /api/dashboard/chart
+ * 
+ * @param {*} method 
+ */
+
 function chart(method) {
   let res = null;
   switch(method) {
