@@ -172,7 +172,8 @@ router.beforeEach((to, from, next) => {
     NProgress.start();
   }
 
-  // Todo: check npm lodash usage
+  // lodash provides a bunch of convinence methods to handle raw javascript stuff
+  // [github]: https://github.com/lodash/lodash
   const record = findLast(to.matched, record => record.meta.authority);
 
   if (record && !check(record.meta.authority)) {
