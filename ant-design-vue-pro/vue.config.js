@@ -5,6 +5,13 @@ module.exports = {
   css: {
     loaderOptions: {
       less: {
+        // Customize global theme color
+        // https://www.antdv.com/docs/vue/customize-theme-cn/
+        modifyVars: {
+          'primary-color': '#1DA57A',
+          'link-color': '#1DA57A',
+          'border-radius-base': '2px',
+        },
         javascriptEnabled: true  // https://github.com/ant-design/ant-motion/issues/44
       }
     }
