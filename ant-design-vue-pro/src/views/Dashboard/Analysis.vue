@@ -16,6 +16,25 @@ export default {
       chartOption: {}
     }
   },
+  mounted() {
+    // Retrieve chart data
+    this.getChartData();
+
+    // Chart data options will be changing at interval
+    this.interval = setInterval(() => {
+      // this.chartOption.series[0].data = this.chartOption.series[0].data.map(() => {
+      //   return random(100);
+      // });
+
+      // // [Important: ]
+      // // There are two solutions to monitor option changes
+      // // Solution1: reassign new chartOption to the old one
+      // // solution2: use deep watch monitoring, but such an option is expensive
+      // this.chartOption = { ...this.chartOption };
+
+      this.getChartData();
+    }, 3000);
+  },
   methods: {
     getChartData() {
       request({
@@ -59,25 +78,6 @@ export default {
       //   };
       // });
     }
-  },
-  mounted() {
-    // Retrieve chart data
-    this.getChartData();
-
-    // Chart data options will be changing at interval
-    this.interval = setInterval(() => {
-      // this.chartOption.series[0].data = this.chartOption.series[0].data.map(() => {
-      //   return random(100);
-      // });
-
-      // // [Important: ]
-      // // There are two solutions to monitor option changes
-      // // Solution1: reassign new chartOption to the old one
-      // // solution2: use deep watch monitoring, but such an option is expensive
-      // this.chartOption = { ...this.chartOption };
-
-      this.getChartData();
-    }, 3000);
   },
   beforeDestroy () {
     clearInterval(this.interval);
