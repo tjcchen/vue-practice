@@ -5,11 +5,11 @@
       <router-link to="/">Dashboard</router-link> |
       <router-link to="/about">About</router-link> |
       <router-link to="/abcd">404</router-link>
-    </div-->
+    </div -->
 
-    <a-locale-provider :locale="locale">
+    <a-config-provider :locale="locale">
       <router-view />
-    </a-locale-provider>
+    </a-config-provider>
   </div>
 </template>
 

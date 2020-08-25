@@ -28,7 +28,7 @@ import {
   Radio,
   Divider,
   Menu,
-  LocaleProvider,
+  ConfigProvider,
   Dropdown,
   DatePicker
 } from "ant-design-vue";
@@ -43,7 +43,7 @@ Vue.use(Drawer);
 Vue.use(Radio);
 Vue.use(Divider);
 Vue.use(Menu);
-Vue.use(LocaleProvider);
+Vue.use(ConfigProvider);  // upgrade from LocalProvider to ConfigProvider, since LocalProvider is deprecated
 Vue.use(Dropdown);
 Vue.use(DatePicker);
 
