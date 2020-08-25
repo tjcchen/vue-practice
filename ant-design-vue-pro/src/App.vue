@@ -21,7 +21,7 @@ import moment from "moment";
 export default {
   data() {
     return {
-      locale: "zhCN"
+      locale: zhCN
     };
   },
   watch: {
