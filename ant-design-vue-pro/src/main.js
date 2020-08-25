@@ -23,7 +23,9 @@ import {
   Drawer,
   Radio,
   Divider,
-  Menu
+  Menu,
+  LocaleProvider,
+  Dropdown
 } from "ant-design-vue";
 
 Vue.config.productionTip = false;
@@ -36,6 +38,8 @@ Vue.use(Drawer);
 Vue.use(Radio);
 Vue.use(Divider);
 Vue.use(Menu);
+Vue.use(LocaleProvider);
+Vue.use(Dropdown);
 
 // Register v-auth directive to global context
 Vue.use(Auth);
