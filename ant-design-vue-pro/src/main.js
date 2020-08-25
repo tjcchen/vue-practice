@@ -52,8 +52,12 @@ Vue.use(VueI18n);
 const i18n = new VueI18n({
   locale: queryString.parse(location.search).locale || "zhCN",
   messages: {
-    zhCN: { message: zhCN },
-    enUS: { message: enUS }
+    zhCN: { 
+      message: zhCN
+    },
+    enUS: { 
+      message: enUS
+    }
   }
 });
 

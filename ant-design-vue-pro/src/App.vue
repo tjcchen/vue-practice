@@ -27,6 +27,7 @@ export default {
   watch: {
     "$route.query.locale": function(val) {
       this.locale = val === "enUS" ? enUS : zhCN;
+
       moment.locale(val === "enUS" ? "en" : "zh-cn");
     }
   }
