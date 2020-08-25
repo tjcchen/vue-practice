@@ -25,7 +25,8 @@ import {
   Divider,
   Menu,
   LocaleProvider,
-  Dropdown
+  Dropdown,
+  DatePicker
 } from "ant-design-vue";
 
 Vue.config.productionTip = false;
@@ -40,6 +41,7 @@ Vue.use(Divider);
 Vue.use(Menu);
 Vue.use(LocaleProvider);
 Vue.use(Dropdown);
+Vue.use(DatePicker);
 
 // Register v-auth directive to global context
 Vue.use(Auth);

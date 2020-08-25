@@ -1,9 +1,17 @@
 <template>
-  <div>BasicForm</div>
+  <div>
+    Time: <a-date-picker @change="onChange"></a-date-picker>
+  </div>
 </template>
 
 <script>
-export default {};
+export default {
+  methods: {
+    onChange(date, dateString) {
+      console.log(date, dateString);
+    },
+  }
+};
 </script>
 
 <style>
