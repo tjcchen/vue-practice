@@ -19,6 +19,9 @@ export default {
   methods: {
     localeChange({ key }) {
       this.$router.push({ query: { ...this.$route.query, locale: key } });
+
+      // Update i18n locale
+      this.$i18n.locale = key;
     }
   }
 };

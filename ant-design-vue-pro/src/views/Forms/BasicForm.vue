@@ -1,6 +1,6 @@
 <template>
   <div>
-    Time: <a-date-picker @change="onChange"></a-date-picker>
+    {{ $t('message')['app.dashboard.basicForm.timeLabel'] }}: <a-date-picker @change="onChange"></a-date-picker>
   </div>
 </template>
 
@@ -9,7 +9,7 @@ export default {
   methods: {
     onChange(date, dateString) {
       console.log(date, dateString);
-    },
+    }
   }
 };
 </script>

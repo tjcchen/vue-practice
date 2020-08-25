@@ -4,6 +4,10 @@ import router from "./router";
 import store from "./store";
 import Authorized from "./components/Authorized";
 import Auth from "./directives/auth";
+import VueI18n from "vue-i18n";
+import enUS from "./locale/enUS";
+import zhCN from "./locale/zhCN";
+import queryString from "query-string";
 
 // Import ant-design-vue and its corresponding css, this works fine if you are using css
 // import Antd from "ant-design-vue";
@@ -43,6 +47,16 @@ Vue.use(LocaleProvider);
 Vue.use(Dropdown);
 Vue.use(DatePicker);
 
+// i18n section
+Vue.use(VueI18n);
+const i18n = new VueI18n({
+  locale: queryString.parse(location.search).locale || "zhCN",
+  messages: {
+    zhCN: { message: zhCN },
+    enUS: { message: enUS }
+  }
+});
+
 // Register v-auth directive to global context
 Vue.use(Auth);
 
@@ -57,6 +71,7 @@ const IconFont = Icon.createFromIconfontCN({
 Vue.component('IconFont', IconFont);
 
 new Vue({
+  i18n,
   router,
   store,
   render: h => h(App)
