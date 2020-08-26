@@ -66,19 +66,14 @@ export default {
       console.log("\r\n");
 
       for (let item of routes) {
-        // console.log('openKeysMap: ');
-        // console.log(this.openKeysMap);
-        // console.log('selectedKeysMap: ');
-        // console.log(this.selectedKeysMap);
-        // console.log('\r\n');
-
         // Does not display relevant menu items when users do not have permission
         if (item.meta && item.meta.authority && !check(item.meta.authority)) {
           break;
         }
 
         if (item.name && !item.hideInMenu) {
-          this.openKeysMap[item.path] = parentKeys; // Todo: comprehend this part
+          // Todo: Comprehend this part
+          this.openKeysMap[item.path] = parentKeys;
           this.selectedKeysMap[item.path] = [selectedKey || item.path];
 
           const newItem = { ...item };
@@ -98,11 +93,7 @@ export default {
           }
 
           menuData.push(newItem);
-        } else if (
-          !item.hideInMenu &&
-          !item.hideChildrenInMenu &&
-          item.children
-        ) {
+        } else if (!item.hideInMenu && !item.hideChildrenInMenu && item.children) {
           menuData.push(
             ...this.getMenuData(item.children, [...parentKeys, item.path])
           );
