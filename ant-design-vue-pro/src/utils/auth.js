@@ -1,6 +1,6 @@
 export function getCurrentAuthority() {
   return ["admin"];
-};
+}
 
 export function check(authority) {
   const current = getCurrentAuthority();
@@ -9,9 +9,9 @@ export function check(authority) {
   // implemented by the provided function. It returns a Boolean value.
   // 'item' refers to each item in 'current' array
   return current.some(item => authority.includes(item));
-};
+}
 
 export function isLogin() {
   const current = getCurrentAuthority();
   return current && current[0] !== "guest";
-};
+}

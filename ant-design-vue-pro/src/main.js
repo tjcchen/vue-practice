@@ -61,10 +61,11 @@ const i18n = new VueI18n({
   }
 });
 
-// Register v-auth directive to global context
+// Register code logic to check user accessbility
+// Solution1: Register v-auth directive to global context
 Vue.use(Auth);
 
-// Register Authorized component to global scope so that you can utilize it on every other components
+// Solution2: Register Authorized component to global scope so that you can utilize it on every other components
 Vue.component('Authorized', Authorized);
 
 // Register iconfont to global context
