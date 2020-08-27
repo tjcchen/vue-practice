@@ -1,6 +1,8 @@
 /**
  * Webpack configuration
  */
+const path = require('path');  // Import path
+
 module.exports = {
   css: {
     loaderOptions: {
@@ -13,6 +15,15 @@ module.exports = {
           'border-radius-base': '2px',
         },
         javascriptEnabled: true  // https://github.com/ant-design/ant-motion/issues/44
+      }
+    }
+  },
+
+  // Reduce images' size by code logic
+  configureWebpack: {
+    resolve: {
+      alias: {
+        "@ant-design/icons/lib/dist$": path.resolve(__dirname, "./src/icons.js")
       }
     }
   },
