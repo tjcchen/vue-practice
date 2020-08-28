@@ -21,11 +21,11 @@ module.exports = {
 
   // Reduce images' size by code logic
   configureWebpack: {
-    resolve: {
-      alias: {
-        "@ant-design/icons/lib/dist$": path.resolve(__dirname, "./src/icons.js")
-      }
-    }
+    // resolve: {
+    //   alias: {
+    //     "@ant-design/icons/lib/dist$": path.resolve(__dirname, "./src/icons.js")
+    //   }
+    // }
   },
 
   // Add SVG loader
