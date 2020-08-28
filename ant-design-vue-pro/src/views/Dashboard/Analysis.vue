@@ -22,7 +22,7 @@ export default {
   data() {
     return {
       chartOption: {},
-      chartCode
+      chartCode  // {{ chartCode }} can also be used directly in template, however the code doesn't has the syntax highlight capability
     }
   },
   components: {
