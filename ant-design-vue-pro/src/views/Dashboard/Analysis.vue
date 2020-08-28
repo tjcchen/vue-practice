@@ -1,6 +1,13 @@
 <template>
   <div class="analysis">
     <Chart :option="chartOption" style="height: 400px;" />
+
+    <!-- If you want to highlight hardcoded source-code -->
+    <!-- https://github.com/metachris/vue-highlightjs -->
+    <pre v-highlightjs><code class="javascript">const s = new Date().toString()</code></pre>
+
+    <!-- If your source-code lives in a variable called 'sourcecode' -->
+    <pre v-highlightjs="chartCode"><code class="javascript"></code></pre>
   </div>
 </template>
 
@@ -9,12 +16,17 @@
 // import axios from "axios";
 import request from "@/utils/request";
 import Chart from "@/components/Chart";
+import chartCode from "!!raw-loader!@/components/Chart";
 
 export default {
   data() {
     return {
-      chartOption: {}
+      chartOption: {},
+      chartCode
     }
+  },
+  components: {
+    Chart
   },
   mounted() {
     // Retrieve chart data
@@ -81,9 +93,6 @@ export default {
   },
   beforeDestroy () {
     clearInterval(this.interval);
-  },
-  components: {
-    Chart
   }
 };
 </script>

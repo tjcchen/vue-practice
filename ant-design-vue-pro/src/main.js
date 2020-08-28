@@ -8,6 +8,7 @@ import VueI18n from "vue-i18n";
 import enUS from "./locale/enUS";
 import zhCN from "./locale/zhCN";
 import queryString from "query-string";
+import VueHighlightJS from "vue-highlightjs";
 
 // Import ant-design-vue and its corresponding css, this works fine if you are using css
 // import Antd from "ant-design-vue";
@@ -32,6 +33,8 @@ import {
   Dropdown,
   DatePicker
 } from "ant-design-vue";
+// Import highlight style, please refer to https://highlightjs.org/usage/
+import "highlight.js/styles/github.css";
 
 Vue.config.productionTip = false;
 
@@ -46,6 +49,9 @@ Vue.use(Menu);
 Vue.use(ConfigProvider);  // upgrade from LocalProvider to ConfigProvider, since LocalProvider is deprecated
 Vue.use(Dropdown);
 Vue.use(DatePicker);
+
+// Tell Vue.js to use vue-highlightjs
+Vue.use(VueHighlightJS)
 
 // i18n section
 Vue.use(VueI18n);
