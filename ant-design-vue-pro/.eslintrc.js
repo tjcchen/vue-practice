@@ -2,9 +2,9 @@ module.exports = {
   root: true,
   env: {
     node: true,
-    jest: true
+    jest: true  // Enable jest for Vue unit test
   },
-  
+
   // Disable prettier at this time
   // extends: ["plugin:vue/essential", "eslint:recommended", "@vue/prettier"],
   extends: ["plugin:vue/essential", "eslint:recommended"],

@@ -12,8 +12,13 @@ module.exports = {
     "^@/(.*)$": "<rootDir>/src/$1"
   },
   snapshotSerializers: ["jest-serializer-vue"],
+  // Unit test file path
   testMatch: [
-    "**/tests/unit/**/*.spec.(js|jsx|ts|tsx)|**/__tests__/*.(js|jsx|ts|tsx)"
+    "**/*.spec.(js|jsx|ts|tsx)|**/__tests__/*.(js|jsx|ts|tsx)"
   ],
-  testURL: "http://localhost"
+  testURL: "http://localhost",
+  // Generate coverage report only when environment variable is true
+  collectCoverage: process.env.COVERAGE === "true",
+  // Coverage Report will cover the following files
+  collectCoverageFrom: ["src/**/*.{js|vue}", "!**/node_modules/**"]
 };
