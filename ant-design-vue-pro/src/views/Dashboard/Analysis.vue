@@ -38,10 +38,10 @@ export default {
       //   return random(100);
       // });
 
-      // // [Important: ]
-      // // There are two solutions to monitor option changes
-      // // Solution1: reassign new chartOption to the old one
-      // // solution2: use deep watch monitoring, but such an option is expensive
+      // [Important: ]
+      // There are two solutions to monitor option changes
+      // Solution1: reassign new chartOption to the old one
+      // solution2: use deep watch monitoring, but such an option is expensive
       // this.chartOption = { ...this.chartOption };
 
       this.getChartData();
