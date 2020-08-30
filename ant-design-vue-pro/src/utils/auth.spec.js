@@ -1,6 +1,6 @@
 import { check, currentAuth } from "./auth";
 
-describe("empty auth", () => {
+describe("Test different accounts' auth accessbility", () => {
   it("empty auth", () => {
     // Empty current auth, array.splice() will insert or delete array elements
     currentAuth.splice(0, currentAuth.length);
