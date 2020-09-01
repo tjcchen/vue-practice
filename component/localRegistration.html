@@ -7,7 +7,7 @@
 <body>
   <div id="root">
     <button-counter></button-counter>
-    <test @click="clicknow"></test>
+    <test></test>
     {{ msg }}
   </div>
 
@@ -21,10 +21,12 @@
     },
     template: 
     `<div>
-      <h1>h1...</h1>
+      <h1 @click="clickme">h1...</h1>
     </div>`,
     methods: {
-
+      clickme: function() {
+        console.log('clickme');
+      }
     }
   });
 
@@ -33,14 +35,18 @@
     data: {
       msg: 'hello vuejs'
     },
-    methods: {
-      clicknow: function(e) {
-        console.log(e);
-      }
-    },
     components: {
+      // Please notice the scope of local registration components
       test: {
-        template: '<div><h2>h2...</h2></div>'
+        template: 
+        '<div>\
+          <h2 @click="clicknow">h2...</h2>\
+        </div>',
+        methods: {
+          clicknow: function() {
+            console.log('clicknow');
+          }
+        }
       }
     }
   });

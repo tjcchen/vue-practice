@@ -40,8 +40,8 @@
     {{ tab }}
     </button>
 
-  <!-- Component changes when currentTabComponent changes, note the 'v-bind:is' usage -->
-  <component v-bind:is="currentTabComponent" class="tab"></component>
+    <!-- Component changes( dynamically ) when currentTabComponent changes, note the 'v-bind:is' usage -->
+    <component v-bind:is="currentTabComponent" class="tab"></component>
   </div>
 
   <script type="text/javascript">
