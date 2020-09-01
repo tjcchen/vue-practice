@@ -16,7 +16,8 @@
 
         <!-- New syntax, after version 2.5                               -->
         <!-- Adding previous icon and suffix icon to todo item component -->
-        <template v-slot:pre-icon="{value}">
+        <!-- value coming from component slot inside -->
+        <template v-slot:pre-icon="{ value }">
           <span>Previous {{ value }}</span>
         </template>
 
