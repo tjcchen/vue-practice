@@ -29,7 +29,11 @@
       // Adding component attribute with 'props'
       props: ['title'],
       // Use div to include multiple html elements
-      template: '<div><h1>{{ title }}</h1><button v-on:click="count++" :title="title">You clicked me {{ count }} times</button></div>'
+      template: 
+      `<div>
+        <h1>{{ title }}</h1>
+        <button v-on:click="count++" :title="title">You clicked me {{ count }} times</button>
+      </div>`
     });
 
     let vm = new Vue({

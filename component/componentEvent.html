@@ -6,7 +6,7 @@
 </head>
 <body>
   <div id="root">
-    <button-counter title="btn1" @clicknow="clicknow"></button-counter>
+    <button-counter title="btn1" @clicknow="clicknowHandler"></button-counter>
   </div>
 
   <script type="text/javascript">
@@ -50,7 +50,7 @@
 
       methods: {
         // The count parameter, namely args, can be parsed in by this.$emit(eventName, args);
-        clicknow: function(count) {
+        clicknowHandler: function(count) {
           console.log('current count is: ' + count);
         }
       }

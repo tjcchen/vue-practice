@@ -5,15 +5,9 @@
   <script type="text/javascript" src="../vue.js"></script>
 </head>
 <body>
-
   <div id="root">
-
-    <!--
-      Now we provide each todo-item with the todo object it's representing,
-      so that its content can be dynamic.
-      We also need to provide each component with a "key", 
-      which will be explained later.
-    -->
+    <!-- Now we provide each todo-item with the todo object it's representing, -->
+    <!-- so that its content can be dynamic. We also need to provide each component with a "key" -->
     <ol>
       <todo-item
         v-for="item in groceryList"
@@ -21,13 +15,12 @@
         v-bind:key="item.id"
       ></todo-item>
     </ol>
-
   </div>
 
   <script type="text/javascript">
     Vue.component('todo-item', {
       props: ['todo'],
-      template: '<li>{{ todo.text }}</li>'
+      template: '<li :data-id="todo.id">{{ todo.text }}</li>'
     });
 
     let vm = new Vue({
