@@ -30,11 +30,11 @@
     <!-- content is simple, or you are intentionally relying on the default behavior for performance gains. -->
     <!-- Please use string or numeric values as key identifier.                                             -->
     <ul>
-      <li v-for="(value, key, index) in object" :key="key">{{ index }} - {{ key }} - {{ value }}</li>
+      <li v-for="(value, key, index) in object" :key="key">{{ index }} - {{ key }}: {{ value }}</li>
     </ul>
   </div>
 
-  <!-- Non mutating methods: filter, concat, slice. These methods will not the original array -->
+  <!-- Non mutating methods: filter, concat, slice. These methods will not affect the original array -->
   <!--
     example1.items = example1.items.filter(function (item) {
       return item.message.match(/Foo/)

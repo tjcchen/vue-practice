@@ -5,7 +5,6 @@
   <script type="text/javascript" src="../vue.js"></script>
 </head>
 <body>
-
   <div id="root">
     <p v-if="seen">Show me please!</p>
     <p>
@@ -43,19 +42,19 @@
     let arr2 = arr.map(x => x * 2);
     let arr3 = arr.map(Math.sqrt);  // calculate square root
 
-    console.log(arr2);
-    console.log(arr3);
+    console.log(arr2);  // [2, 4, 6, 8, 10]
+    console.log(arr3);  // [1, 1.414, 1.732, 2, 2.236]
 
     // Eg2: Test array reduce usage
     // arr.reduce(callback[accumulator, currentValue, currentIndex, array], initialValue)
     // [IMPORTANT]: The accumulator parameter accumulates callback's return values.
     // [IMPORTANT]: It is the accumulated value previously returned in the last invocation of the callback—or initialValue, if it was supplied.
     
-    let sum = arr.reduce((x, y) => x + y);
-    let product = arr.reduce((x, y) => x * y);
+    let sum = arr.reduce((x, y) => x + y);  // sum = 15
+    let product = arr.reduce((x, y) => x * y);  // product = 120; exp: 1*2*3*4*5 = 120
 
-    console.log('sum: ' + sum);
-    console.log('product: ' + product);
+    console.log('sum: ' + sum);  // 15
+    console.log('product: ' + product);  // 120
 
     // Names counter
     let names = ['Alice', 'Bob', 'Tiffany', 'Bruce', 'Alice', 'Bruce'];
@@ -95,7 +94,7 @@
       return accumNum + cur.score;
     }, 0);
 
-    console.log(scoreNum);
+    console.log(scoreNum);  // 80 + 95 + 90 = 265
   </script>
 </body>
 </html>

@@ -67,11 +67,8 @@
     },
     methods: {
       date: function(time) {
+        // Deal with timestamp
         let oDate = new Date(time);
-
-        // 后端给的时间戳以秒为单位，在前端需要做相应处理(Eg: timestamp * 1000)
-        // javascript当中，以毫秒为单位
-
         return oDate.getFullYear() + '-' + (oDate.getMonth() + 1) + '-' + oDate.getDate();
       }
     }
