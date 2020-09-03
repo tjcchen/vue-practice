@@ -7,6 +7,7 @@
 <body>
   <div id="root">
     <!-- Dynamic class with Json object -->
+    <!-- Please note that 'text-dander' class has to be wrapped with quotation marks, otherwise it would cast error -->
     <div
       class="border"
       v-bind:class="{ active: isActive, green: isGreen, 'text-dander': hasError }"
@@ -16,7 +17,7 @@
 
     <br/>
 
-    <!-- Dynamic object class -->
+    <!-- Dynamic object class, we can seperate hard code class with mutable classes -->
     <div
       class="border"
       v-bind:class="classObject"
@@ -26,7 +27,7 @@
 
     <br/>
 
-    <!-- Dynamic computed object class -->
+    <!-- Dynamic computed object class, we can seperate hard code class with mutable classes -->
     <div
       class="border"
       v-bind:class="classObjectComputed"
@@ -36,7 +37,7 @@
 
     <br/>
 
-    <!-- Dynamic class with array -->
+    <!-- Dynamic class with array, class name can be determined by boolean value -->
     <div
       class="border"
       v-bind:class="[ isActive ? 'active' : '', isGreen ? 'green' : '']"
@@ -46,7 +47,7 @@
 
     <br/>
 
-    <!-- Dynamic style with Json object -->
+    <!-- Dynamic style with Json object, the variable can be attribute value -->
     <div :style="{ color: color, fontSize: size, background: isRed ? '#f00' : '' }">
       Dynamic Style!
     </div>
