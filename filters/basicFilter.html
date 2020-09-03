@@ -9,6 +9,10 @@
     <p>{{ greeting | capitalize }}</p>
     <p>{{ 'jason' | uppercase }}</p>
     <p>{{ 'WONG' | lowercase }}</p>
+    <p>{{ jObj | json }}</p>
+    <p v-once>{{ loadOnce }}</p>
+    <p>{{ htmlTag }}</p>
+    <p v-html="htmlTag"></p>
   </div>
 
   <script type="text/javascript">
@@ -16,7 +20,13 @@
       el: '#root',
       data: {
         counter: 0,
-        greeting: 'hello world'
+        greeting: 'hello world',
+        loadOnce: 'loadOnce',
+        htmlTag: '<span>htmlTag</span>',
+        jObj: {
+          name: 'jason',
+          age: 28
+        }
       },
       filters: {
         capitalize: function(value) {
@@ -29,6 +39,9 @@
         },
         lowercase: function(value) {
           return value.toString().toLowerCase();
+        },
+        json: function(value) {
+          return JSON.stringify(value);
         }
       }
     });
