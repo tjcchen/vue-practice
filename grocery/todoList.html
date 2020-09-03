@@ -7,7 +7,7 @@
 <body>
   <div id="todo-list-example">
     <form v-on:submit.prevent="addNewTodo">
-      <label for="new-todo">Add a todo</label>
+      <label for="new-todo">Add a new todo: </label>
       <input
         v-model="newTodoText"
         id="new-todo"
@@ -18,13 +18,13 @@
 
     <ul>
       <!-- Pay attention to this 'is' usage, it can be replaced by the following format -->
-      <li
+      <component
         is="todo-item"
         v-for="(todo, index) in todos"
         v-bind:key="todo.id"
         v-bind:title="todo.title"
         v-on:remove="todos.splice(index, 1)"
-      ></li>
+      ></component>
 
       <!-- todo-item
         v-for="(todo, index) in todos"
@@ -37,7 +37,12 @@
 
   <script type="text/javascript">
     Vue.component('todo-item', {
-      template: '<li>{{ title }}<button v-on:click="$emit(\'remove\')">Remove</button></li>',
+      template: `
+        <li>
+          {{ title }}
+          <button v-on:click="$emit(\'remove\')">Remove</button>
+        </li>
+      `,
       props: ['title']
     });
 
@@ -63,7 +68,7 @@
       },
       
       methods: {
-        addNewTodo: function() {
+        addNewTodo () {
           this.todos.push({
             id: this.nextTodoId++,  // Used as id identifier
             title: this.newTodoText  // Assign current newTodoText
