@@ -37,12 +37,16 @@
     <div>
       <!-- Return empty string when the value is not a number -->
       Please enter number: <input v-model.number="age" type="number">
+      <br/>
+      {{ age }}
     </div>
 
     <div>
       <!-- Lazy and Trim of two way binding -->
       <!-- Lazy: Synced after "change" instead of "input" -->
       Lazy message: <input v-model.lazy.trim="msg">
+      <br/>
+      {{ msg }}
     </div>
   </div>
 
