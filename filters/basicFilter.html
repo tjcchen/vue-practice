@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Vue Basic Filter</title>
+  <script type="text/javascript" src="../vue.js"></script>
+</head>
+<body>
+  <div id="root">
+    <p>{{ greeting | capitalize }}</p>
+    <p>{{ 'jason' | uppercase }}</p>
+    <p>{{ 'WONG' | lowercase }}</p>
+  </div>
+
+  <script type="text/javascript">
+    let vm = new Vue({
+      el: '#root',
+      data: {
+        counter: 0,
+        greeting: 'hello world'
+      },
+      filters: {
+        capitalize: function(value) {
+          if (!value) return '';
+          value = value.toString();
+          return value.charAt(0).toUpperCase() + value.slice(1);
+        },
+        uppercase: function(value) {
+          return value.toString().toUpperCase();
+        },
+        lowercase: function(value) {
+          return value.toString().toLowerCase();
+        }
+      }
+    });
+  </script>
+</body>
+</html>
