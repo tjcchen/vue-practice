@@ -1,7 +1,7 @@
 /**
  * Webpack configuration
  */
-const path = require('path');  // Import path
+// const path = require('path');  // Import path
 
 module.exports = {
   css: {
