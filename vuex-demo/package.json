@@ -10,6 +10,7 @@
   "dependencies": {
     "core-js": "^3.6.4",
     "lodash": "^4.17.19",
+    "node-forge": "^0.10.0",
     "serialize-javascript": "^4.0.0",
     "vue": "^2.6.11",
     "vuex": "^3.3.0"
