@@ -1,10 +1,21 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="../../assets/logo.png">
+    <img width="120px" height="120px" alt="Vue logo" src="../../assets/logo.png">
     <p>About Page</p>
-    <a href="/">Go To Home Page</a>
+    <LinkGroup></LinkGroup>
   </div>
 </template>
+
+<script>
+import LinkGroup from '@/components/LinkGroup.vue';
+
+export default {
+  name: 'About',
+  components: {
+    LinkGroup
+  }
+}
+</script>
 
 <style>
 #app {

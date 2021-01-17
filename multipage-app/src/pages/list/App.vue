@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <img width="120px" height="120px" alt="Vue logo" src="../../assets/logo.png">
-    <p>Home Page</p>
+    <p>Item List Page</p>
     <LinkGroup></LinkGroup>
   </div>
 </template>
@@ -10,7 +10,7 @@
 import LinkGroup from '@/components/LinkGroup.vue';
 
 export default {
-  name: 'Home',
+  name: 'List',
   components: {
     LinkGroup
   }

@@ -6,6 +6,12 @@ module.exports = {
       title: 'Home',
       chunks: ['chunk-vendors', 'chunk-common', 'index']
     },
+    'list': {
+      entry: './src/pages/list/main.js',
+      template: 'public/index.html',
+      title: 'List',
+      chunks: ['chunk-vendors', 'chunk-common', 'list']
+    },
     'about': {
       entry: './src/pages/about/main.js',
       template: 'public/index.html',
