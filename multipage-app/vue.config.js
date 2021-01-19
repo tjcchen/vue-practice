@@ -18,5 +18,15 @@ module.exports = {
       title: 'About',
       chunks: ['chunk-vendors', 'chunk-common', 'about']
     }
-  }
+  },
+
+  // css: {
+  //   loaderOptions: {
+  //     less: {
+  //       data: `
+  //         @import '@style/reset.less';
+  //       `
+  //     }
+  //   }
+  // }
 };
