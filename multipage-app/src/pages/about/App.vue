@@ -8,6 +8,9 @@
 
 <script>
 import LinkGroup from '@/components/LinkGroup.vue';
+import vhCheck from 'vh-check';
+
+vhCheck('browser-address-bar');
 
 export default {
   name: 'About',
@@ -21,6 +24,8 @@ export default {
 @import (reference) "../../style/reset.less";
 body {
   background: @bgColor;
+  height: 100vh;
+  height: calc(100vh - var(--browser-address-bar, 0px));
 }
 
 #app {

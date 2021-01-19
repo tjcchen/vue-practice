@@ -12,6 +12,7 @@
     "less": "^4.1.0",
     "less-loader": "^7.2.1",
     "nprogress": "^0.2.0",
+    "vh-check": "^2.0.5",
     "vue": "^2.6.11"
   },
   "devDependencies": {
