@@ -8,11 +8,21 @@
 
 <script>
 import LinkGroup from '@/components/LinkGroup.vue';
+import nprogress from 'nprogress';
+import 'nprogress/nprogress.css';
 
 export default {
   name: 'List',
   components: {
     LinkGroup
+  },
+  created() {
+    nprogress.start();
+  },
+  mounted() {
+    this.$nextTick(function() {
+      nprogress.done();
+    });
   }
 }
 </script>
