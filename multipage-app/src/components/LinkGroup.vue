@@ -1,5 +1,5 @@
 <template>
-  <div class="link-group" v-cloak>
+  <div class="link-group">
     <a href="/">{{ Home }}</a>
     <a href="/list">{{ List }}</a>
     <a href="/about">{{ About }}</a>
@@ -27,10 +27,6 @@ export default {
       color: green;
     }
   }
-}
-
-[v-cloak] {
-  display: none;
 }
 </style>
 

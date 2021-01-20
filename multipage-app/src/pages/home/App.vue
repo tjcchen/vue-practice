@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="app" v-cloak>
     <img alt="Vue logo" src="../../assets/logo.png">
     <p>Home Page</p>
     <LinkGroup></LinkGroup>
@@ -39,5 +39,9 @@ body {
   p {
     margin: 10px 0;
   }
+}
+
+[v-cloak] {
+  display: none;
 }
 </style>
