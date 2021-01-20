@@ -20,6 +20,7 @@ module.exports = {
     }
   },
 
+  // less support & import global stylesheet
   css: {
     loaderOptions: {
       less: {
