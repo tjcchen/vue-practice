@@ -1,6 +1,7 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="../../assets/logo.png">
+    <!-- Inline svg image, associated configs in vue.config.js -->
+    <ProSvgImg class="pro-svg"></ProSvgImg>
     <p>Item List Page</p>
     <LinkGroup></LinkGroup>
   </div>
@@ -8,13 +9,15 @@
 
 <script>
 import LinkGroup from '@/components/LinkGroup.vue';
+import ProSvgImg from '@/assets/pro.svg';
 import nprogress from 'nprogress';
 import 'nprogress/nprogress.css';
 
 export default {
   name: 'List',
   components: {
-    LinkGroup
+    LinkGroup,
+    ProSvgImg
   },
   created() {
     nprogress.start();
@@ -41,7 +44,7 @@ body {
   color: #2c3e50;
   margin-top: 60px;
 
-  img {
+  .pro-svg {
     width: 120px;
     height: 120px;
   }

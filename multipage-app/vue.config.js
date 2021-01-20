@@ -39,7 +39,7 @@ module.exports = {
       new HTMLInlineCssWebpackPlugin(), // put css on page directly
       new HardSourceWebpackPlugin() // use cache for build
     ]
-  }
+  },
 
   // working with webpack( choose different configs for production and development environments )
   // configureWebpack: config => {
@@ -52,4 +52,30 @@ module.exports = {
   //     // mutate config for development
   //   }
   // }
+
+  // we can modify webpack config with chainWebpack option(webpack-chain npm module)
+  chainWebpack: config => {
+    config.module
+          .rule('vue')
+          .use('vue-loader')
+          .tap(opts => {
+            // Todo: modify the options
+            // console.log(opts);
+            return opts;
+          });
+
+    //---------------------------------
+    // inline svg with vue-svg-loader
+    //---------------------------------
+    const svgRule = config.module.rule('svg');
+    
+    // clear all existing loaders.
+    // if you don't do this, the loader below will be appended to
+    // existing loaders of the rule.
+    svgRule.uses.clear();
+    
+    // add replacement loader(s)
+    svgRule.use('vue-svg-loader')
+           .loader('vue-svg-loader');    
+  }
 };
