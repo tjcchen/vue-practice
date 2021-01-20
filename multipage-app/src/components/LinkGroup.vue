@@ -1,5 +1,5 @@
 <template>
-  <div class="link-group">
+  <div class="link-group" v-cloak>
     <a href="/">{{ Home }}</a>
     <a href="/list">{{ List }}</a>
     <a href="/about">{{ About }}</a>
@@ -19,9 +19,18 @@ export default {
 }
 </script>
 
-<style scoped>
-.link-group a {
-  padding: 0 10px;
+<style scoped lang="less">
+.link-group {
+  a {
+    padding: 0 10px;
+    &:hover {
+      color: green;
+    }
+  }
+}
+
+[v-cloak] {
+  display: none;
 }
 </style>
 
