@@ -12,13 +12,15 @@
 </div>
 
 <script type="text/javascript" src="./simple-vue.js"></script>
-<script type="tex/javascript">
-new Vue({
+<script type="text/javascript">
+const vm = new Vue({
   el: '#app',
   data: {
     msg: 'hello vue'
   }
 });
+console.log(vm);
+vm.msg = 'vuejs core';
 </script>
 </body>
 </html>
