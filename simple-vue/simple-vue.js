@@ -16,10 +16,16 @@ const utils = {
     vm.$data[expression] = newValue;
   },
   /**
-   * 
+   * Update text node
    */
   textUpdate(node, value) {
     node.textContent = value;
+  },
+  /**
+   * Update v-model value
+   */
+  modelUpdate(node, value) {
+    node.value = value;
   },
   /**
    * v-model
@@ -27,25 +33,37 @@ const utils = {
   model(node, value, vm) {
     const initValue = this.getValue(value, vm);
 
+    new Watcher(value, vm, (newValue) => {
+      this.modelUpdate(node, newValue);
+    });
+
     node.addEventListener('input', (e) => {
       const newValue = e.target.value;
       this.setValue(value, vm, newValue);
     });
+
+    this.modelUpdate(node, initValue);
   },
   /**
    * v-text
    */
   text(node, value, vm) {
     let result;
+
     if (value.includes('{{')) {
-      // {{ xxx }}
+      // {{ xxx }}  
       result = value.replace(/\{\{(.+)\}\}/g, (...args) => {
+        const expr = args[1];
+        new Watcher(expr, vm, (newVal) => {
+          this.textUpdate(node, newVal);
+        });
         return this.getValue(args[1], vm);
       })
     } else {
       // v-text="xxx"
       result = this.getValue(value, vm);
     }
+
     this.textUpdate(node, result);
   },
   /**
@@ -55,6 +73,47 @@ const utils = {
 
   }
 };
+
+class Watcher {
+  constructor(expression, vm, callback) {
+    this.expression = expression;
+    this.vm = vm;
+    this.callback = callback;
+    this.oldValue = this.getOldValue();
+  }
+
+  getOldValue() {
+    // Assign target to Dependency for global invocation
+    Dependency.watcher = this;
+
+    const oldValue = utils.getValue(this.expression, this.vm);
+    Dependency.watcher = null;
+
+    return oldValue;
+  }
+
+  update() {
+    const newValue = utils.getValue(this.expression, this.vm);
+
+    if (newValue !== this.oldValue) {
+      this.callback(newValue);
+    }
+  }
+}
+
+class Dependency {
+  constructor() {
+    this.watchers = [];
+  }
+
+  addWatcher(watcher) {
+    this.watchers.push(watcher);
+  }
+
+  notify() {
+    this.watchers.forEach(w => w.update());
+  }
+}
 
 class Observer {
   constructor(data) {
@@ -72,19 +131,27 @@ class Observer {
   defineReactive(obj, key, value) {
     // recursively invoke observe function
     this.observe(value);
+    const dependency = new Dependency();
 
     Object.defineProperty(obj, key, {
       get: () => {
         console.log('$data getter()', key);
+
+        const watcher = Dependency.watcher;
+        watcher && dependency.addWatcher(watcher);
+
         return value;
       },
       set: (newVal) => { // an arrow function needed
         console.log('$data setter()', key, newVal);
+
         if (value === newVal) {
           return;
         }
         this.observe(newVal);
         value = newVal;
+
+        dependency.notify();
       }
     });
   }
