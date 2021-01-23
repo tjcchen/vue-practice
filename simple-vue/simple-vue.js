@@ -2,6 +2,60 @@
  * A simple Vue implementation
  */
 
+const utils = {
+  /**
+   * Get value from vm.$data, this will trigger Object.defineProperty getter() function
+   */
+  getValue(expression, vm) {
+    return vm.$data[expression.trim()];
+  },
+  /**
+   * Set value to vm.$data, this will trigger Object.defineProperty setter() function
+   */
+  setValue(expression, vm, newValue) {
+    vm.$data[expression] = newValue;
+  },
+  /**
+   * 
+   */
+  textUpdate(node, value) {
+    node.textContent = value;
+  },
+  /**
+   * v-model
+   */
+  model(node, value, vm) {
+    const initValue = this.getValue(value, vm);
+
+    node.addEventListener('input', (e) => {
+      const newValue = e.target.value;
+      this.setValue(value, vm, newValue);
+    });
+  },
+  /**
+   * v-text
+   */
+  text(node, value, vm) {
+    let result;
+    if (value.includes('{{')) {
+      // {{ xxx }}
+      result = value.replace(/\{\{(.+)\}\}/g, (...args) => {
+        return this.getValue(args[1], vm);
+      })
+    } else {
+      // v-text="xxx"
+      result = this.getValue(value, vm);
+    }
+    this.textUpdate(node, result);
+  },
+  /**
+   * v-on:click
+   */
+  on(node, value, vm, eventName) {
+
+  }
+};
+
 class Observer {
   constructor(data) {
     this.observe(data);
@@ -21,9 +75,11 @@ class Observer {
 
     Object.defineProperty(obj, key, {
       get: () => {
+        console.log('$data getter()', key);
         return value;
       },
       set: (newVal) => { // an arrow function needed
+        console.log('$data setter()', key, newVal);
         if (value === newVal) {
           return;
         }
@@ -37,11 +93,12 @@ class Observer {
 class Compiler {
   constructor(el, vm) {
     this.el = this.isElementNode(el) ? el : document.querySelector(el);
+    this.vm = vm;
 
     const fragment = this.compileFragment(this.el);
-
     this.compile(fragment);
-    // this.el.appendChild(fragment);
+
+    this.el.appendChild(fragment);
   }
 
   compile(fragment) {
@@ -81,24 +138,21 @@ class Compiler {
 
   compileElement(node) {
     // v-model v-text v-on:click
-    // transform attributes to array - after transforming, the result array can invoke forEach, map etc.
+    // transform attributes to array - after transforming, the result array can invoke forEach, map function etc.
     const attributes = Array.from(node.attributes);
 
     attributes.forEach(attr => {
       const { name, value } = attr;
-      
+
       if (this.isDirective(name)) {
         // v-model, v-text, v-bind, v-on:click
         const [, directive] = name.split('-');
         const [compileKey, eventName] = directive.split(':');
 
-        // TODO: deal with directives
+        // [key]: handle different directives with utils
+        utils[compileKey](node, value, this.vm, eventName);
       }
     });
-  }
-
-  isDirective(name) {
-    return name.startsWith('v-'); // similiar to regexp /^v(.+)/
   }
 
   compileText(node) {
@@ -106,10 +160,16 @@ class Compiler {
     const content = node.textContent;
 
     if (/\{\{(.+)\}\}/.test(content)) {
-      console.log('content: ', content);
-
-      // TODO: deal with text content
+      // make v-text directive logic handle mustache( {{ xxx }} ) syntax
+      utils['text'](node, content, this.vm);
     }
+  }
+
+  /**
+   * Check whether current attribute is a directive, similiar to regexp /^v(.+)/
+   */
+  isDirective(name) {
+    return name.startsWith('v-');
   }
   
   /**
@@ -136,7 +196,7 @@ class Vue {
     // 1. trigger data binding between `this.$data.xxx` and vue template
     new Observer(this.$data);
 
-    // 2. handle template logic, bing data with template
+    // 2. handle template update logic, bing data with template
     new Compiler(this.$el, this);
 
     this.proxyData(this.$data);
