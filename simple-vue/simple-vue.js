@@ -70,7 +70,8 @@ const utils = {
    * v-on:click
    */
   on(node, value, vm, eventName) {
-
+    const fn = vm.$options.methods[value];
+    node.addEventListener(eventName, fn.bind(vm), false);
   }
 };
 
@@ -204,7 +205,7 @@ class Compiler {
   }
 
   compileElement(node) {
-    // v-model v-text v-on:click
+    // v-model v-text v-on:click="handler" @click="handler"
     // transform attributes to array - after transforming, the result array can invoke forEach, map function etc.
     const attributes = Array.from(node.attributes);
 
@@ -218,6 +219,10 @@ class Compiler {
 
         // [key]: handle different directives with utils
         utils[compileKey](node, value, this.vm, eventName);
+      } else if (this.isEventName(name)) {
+        // @click="handler"
+        const [, eventName] = name.split('@');
+        utils['on'](node, value, this.vm, eventName);
       }
     });
   }
@@ -225,11 +230,19 @@ class Compiler {
   compileText(node) {
     // {{ msg }}
     const content = node.textContent;
+    const regExp  = /\{\{(.+)\}\}/;
 
-    if (/\{\{(.+)\}\}/.test(content)) {
+    if (regExp.test(content)) {
       // make v-text directive logic handle mustache( {{ xxx }} ) syntax
       utils['text'](node, content, this.vm);
     }
+  }
+
+  /**
+   * @click="handler" case
+   */
+  isEventName(name) {
+    return name.startsWith('@');
   }
 
   /**
