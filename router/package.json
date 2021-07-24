@@ -11,7 +11,7 @@
     "chokidar": "^3.5.1",
     "core-js": "^3.6.5",
     "fsevents": "^2.3.2",
-    "lodash": "^4.17.19",
+    "lodash": "^4.17.21",
     "node-forge": "^0.10.0",
     "vue": "^2.6.11",
     "vue-router": "^3.3.4",
